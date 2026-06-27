@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portal COA | Central de Automatizações</title>
+
+    <meta name="description"
+        content="Portal corporativo para download dos robôs automatizadores do Centro de Operações Agroindustriais.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- Marca d'água -->
+
+    <div class="background-coa">
+        COA
+    </div>
+
+    <!-- Loader -->
+
+    <div id="loader">
+
+        <div class="loader-circle"></div>
+
+        <h2>Carregando Portal...</h2>
+
+    </div>
+
+    <!-- Conteúdo -->
+
+    <div id="app">
+
+        <header>
+
+            <div class="logo">
+
+                <i class="fa-solid fa-industry"></i>
+
+                <div>
+
+                    <h1>Portal COA</h1>
+
+                    <span>Centro de Operações Agroindustriais</span>
+
+                </div>
+
+            </div>
+
+            <div class="status">
+
+                <span>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Online
+
+                </span>
+
+            </div>
+
+        </header>
+
+        <section class="hero">
+
+            <h2>Portal de Automatizações</h2>
+
+            <p>
+
+                Faça o download das automações desenvolvidas para apoiar as operações do COA.
+
+            </p>
+
+        </section>
+
+        <section class="dashboard">
+
+            <div class="card-info">
+
+                <i class="fa-solid fa-robot"></i>
+
+                <h3 id="totalRobos">0</h3>
+
+                <span>Automatizações</span>
+
+            </div>
+
+            <div class="card-info">
+
+                <i class="fa-solid fa-download"></i>
+
+                <h3>Disponível</h3>
+
+                <span>Download Imediato</span>
+
+            </div>
+
+            <div class="card-info">
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+                <h3 id="dataAtual"></h3>
+
+                <span>Atualização</span>
+
+            </div>
+
+        </section>
+
+        <section class="pesquisa">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Pesquisar automatização...">
+
+        </section>
+
+        <section id="listaRobos" class="grid">
+
+            <!-- Os robôs aparecerão aqui automaticamente -->
+
+        </section>
+
+        <footer>
+
+            <p>
+
+                © 2026
+
+                Portal Corporativo COA
+
+            </p>
+
+            <span>
+
+                Desenvolvido por Dionnes - Agilizar processos da operação.
+
+            </span>
+
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+<!-- MODAL ROBÔ -->
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitulo">Título</h2>
+
+            <button onclick="fecharModal()" class="close-btn">
+                ✖
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <p id="modalDescricao"></p>
+
+            <div class="modal-grid">
+
+                <div>
+                    <strong>Versão</strong>
+                    <span id="modalVersao"></span>
+                </div>
+
+                <div>
+                    <strong>Categoria</strong>
+                    <span id="modalCategoria"></span>
+                </div>
+
+                <div>
+                    <strong>Tamanho</strong>
+                    <span id="modalTamanho"></span>
+                </div>
+
+                <div>
+                    <strong>Atualização</strong>
+                    <span id="modalAtualizacao"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <a id="modalDownload" href="#" download>
+
+                <button class="download-btn">
+                    ⬇ Baixar Automação
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

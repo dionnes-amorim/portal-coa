@@ -1,0 +1,682 @@
+/* ==========================================================
+   PORTAL COA - ESTILO CORPORATIVO
+   Desenvolvido para o Centro de Operações Agroindustriais
+   ========================================================== */
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#0b1d33,#122742,#1b365d);
+    color:#ffffff;
+    min-height:100vh;
+    overflow-x:hidden;
+}
+
+/* Marca d'água */
+.background-coa{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:18rem;
+    font-weight:800;
+    color:rgba(255,255,255,.03);
+    user-select:none;
+    pointer-events:none;
+    z-index:0;
+    letter-spacing:25px;
+}
+
+/* Loader */
+#loader{
+    display:none;
+}
+    position:fixed;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:25px;
+    background:#07131f;
+    z-index:9999;
+}
+
+.loader-circle{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    border:6px solid rgba(255,255,255,.2);
+    border-top:6px solid #39d353;
+    animation:girar 1s linear infinite;
+}
+
+@keyframes girar{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+#loader h2{
+    font-weight:500;
+}
+
+/* Aplicação */
+#app{
+    position:relative;
+    z-index:1;
+    width:min(1400px,95%);
+    margin:auto;
+    padding:35px;
+}
+
+/* Cabeçalho */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:45px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.logo i{
+    font-size:45px;
+    color:#39d353;
+}
+
+.logo h1{
+    font-size:2rem;
+    font-weight:700;
+}
+
+.logo span{
+    color:#b8c7d9;
+}
+
+.status span{
+    background:#39d353;
+    color:#052b12;
+    padding:10px 18px;
+    border-radius:40px;
+    font-weight:600;
+}
+
+/* Hero */
+.hero{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.hero h2{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#d3dceb;
+    font-size:1.1rem;
+}
+
+/* Dashboard */
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+    margin-bottom:45px;
+}
+
+.card-info{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    transition:.35s;
+}
+
+.card-info:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,.12);
+}
+
+.card-info i{
+    font-size:38px;
+    color:#39d353;
+    margin-bottom:15px;
+}
+
+.card-info h3{
+    font-size:2rem;
+}
+
+.card-info span{
+    color:#cbd6e3;
+}
+
+/* Pesquisa */
+.pesquisa{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    border-radius:18px;
+    padding:18px 22px;
+    margin-bottom:40px;
+}
+
+.pesquisa i{
+    color:#39d353;
+}
+
+.pesquisa input{
+    flex:1;
+    background:none;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size:1rem;
+}
+
+.pesquisa input::placeholder{
+    color:#cbd6e3;
+}
+
+/* Grade dos robôs */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+/* ==========================================================
+   CARDS DOS ROBÔS
+========================================================== */
+
+.robot-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:25px;
+
+    padding:28px;
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.robot-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-100%;
+
+    width:100%;
+
+    height:4px;
+
+    background:linear-gradient(90deg,#39d353,#00c6ff);
+
+    transition:.5s;
+
+}
+
+.robot-card:hover::before{
+
+    left:0;
+
+}
+
+.robot-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 55px rgba(0,0,0,.35);
+
+}
+
+.robot-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:20px;
+
+}
+
+.robot-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#39d353,#16a34a);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:32px;
+
+    color:white;
+
+}
+
+.robot-title h2{
+
+    font-size:1.3rem;
+
+    margin-bottom:5px;
+
+}
+
+.robot-title span{
+
+    color:#b7c6d9;
+
+    font-size:.9rem;
+
+}
+
+.robot-description{
+
+    color:#d5dfeb;
+
+    line-height:1.7;
+
+    margin:20px 0;
+
+    min-height:70px;
+
+}
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badges{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:20px;
+
+}
+
+.badge{
+
+    padding:8px 15px;
+
+    border-radius:30px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.badge.version{
+
+    background:#1d4ed8;
+
+}
+
+.badge.xlsm{
+
+    background:#0d9488;
+
+}
+
+.badge.novo{
+
+    background:#16a34a;
+
+}
+
+.badge.update{
+
+    background:#f59e0b;
+
+}
+
+/* ==========================================================
+   INFORMAÇÕES
+========================================================== */
+
+.robot-info{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+.info-box{
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:15px;
+
+    padding:15px;
+
+}
+
+.info-box small{
+
+    color:#aab6c6;
+
+    display:block;
+
+    margin-bottom:5px;
+
+}
+
+.info-box strong{
+
+    font-size:1rem;
+
+}
+
+/* ==========================================================
+   BOTÃO DOWNLOAD
+========================================================== */
+
+.download-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:linear-gradient(135deg,#39d353,#16a34a);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:0 15px 30px rgba(57,211,83,.35);
+
+}
+
+.download-btn i{
+
+    margin-right:10px;
+
+}
+
+/* ==========================================================
+   RODAPÉ
+========================================================== */
+
+footer{
+
+    margin-top:80px;
+
+    text-align:center;
+
+    color:#b8c7d9;
+
+    padding:40px 0;
+
+}
+
+footer p{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+footer span{
+
+    font-size:14px;
+
+    opacity:.8;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#081321;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#39d353;
+
+    border-radius:20px;
+
+}
+
+/* ==========================================================
+   ANIMAÇÕES
+========================================================== */
+
+.robot-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
+@media(max-width:900px){
+
+header{
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+.hero h2{
+
+    font-size:2.2rem;
+
+}
+
+.background-coa{
+
+    font-size:10rem;
+
+}
+
+}
+
+@media(max-width:650px){
+
+#app{
+
+    padding:20px;
+
+}
+
+.hero h2{
+
+    font-size:1.8rem;
+
+}
+
+.logo{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.robot-info{
+
+    grid-template-columns:1fr;
+
+}
+
+.background-coa{
+
+    font-size:6rem;
+#app{
+    display:none;
+
+}
+
+}
+/* ================================
+   MODAL
+================================ */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.modal-content{
+    width:min(600px,90%);
+    background:rgba(15,25,40,.95);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    padding:25px;
+    animation:fadeUp .3s ease;
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close-btn{
+    background:none;
+    border:none;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.modal-body p{
+    color:#d3dceb;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.modal-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.modal-grid div{
+    background:rgba(255,255,255,.05);
+    padding:15px;
+    border-radius:12px;
+}
+
+.modal-grid strong{
+    display:block;
+    color:#39d353;
+    margin-bottom:5px;
+}
+
+.modal-footer{
+    margin-top:20px;
+    text-align:center;
+}
