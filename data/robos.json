@@ -1,8 +1,8 @@
 [
   {
-    "nome": "Robô Programação de OS",
+    "nome": "Identificar Firmwares Desatualizados",
     "descricao": "Automatiza o processo de programação das Ordens de Serviço do COA.",
-    "arquivo": "Robo_OS.xlsm",
+    "arquivo": "Identificar Firmwares Desatualizados.xlsm",
     "versao": "1.0",
     "tamanho": "420 KB",
     "categoria": "Manutenção",
