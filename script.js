@@ -107,11 +107,17 @@ function desenhar(listaRobos) {
 
             </div>
 
-            <button class="download-btn" onclick='abrirModal(${JSON.stringify(r)})'>
-    		<i class="fa-solid fa-circle-info"></i>
-   		 Mais Detalhes
-	</button>
+            <a href="arquivos/${r.arquivo}" download>
 
+    <button class="download-btn">
+
+        <i class="fa-solid fa-download"></i>
+
+        Baixar Automação
+
+    </button>
+
+</a>
                 <button class="download-btn">
                     <i class="fa-solid fa-download"></i>
                     Baixar Automação
@@ -143,7 +149,7 @@ pesquisa.addEventListener("input", () => {
     desenhar(filtrado);
 
 });
-const modal = document.getElementById("modal");
+ const modal = document.getElementById("modal");
 
 function abrirModal(r){
 
