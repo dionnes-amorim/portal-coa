@@ -307,3 +307,39 @@ function toggleTheme(){
     }
 
 })();
+function ativarFocusCards(){
+
+    const cards = document.querySelectorAll(".robot-card");
+
+    cards.forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            // remove de todos
+            cards.forEach(c => c.classList.remove("active"));
+
+            // ativa no clicado
+            card.classList.add("active");
+
+            // ativa blur no fundo
+            document.body.classList.add("card-open");
+
+        });
+
+    });
+
+}
+
+/* fechar ao clicar fora */
+document.addEventListener("click", (e) => {
+
+    if(!e.target.closest(".robot-card")){
+
+        document.querySelectorAll(".robot-card")
+        .forEach(c => c.classList.remove("active"));
+
+        document.body.classList.remove("card-open");
+
+    }
+
+});
