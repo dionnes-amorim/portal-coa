@@ -1,7 +1,7 @@
 /* ===========================================
    PORTAL DE AUTOMAÇÕES COA
    TEREOS BRASIL
-   Style.css - Parte 1/4
+   STYLE.CSS - PARTE 1/5
 =========================================== */
 
 /* RESET */
@@ -28,9 +28,24 @@
     --text:#d9dfe8;
     --gray:#9aa8bc;
 
-    --shadow:0 15px 35px rgba(0,0,0,.35);
+    --shadow:0 15px 35px rgba(0,0,0,.30);
+    --radius:20px;
+    --transition:.30s;
 
-    --radius:18px;
+}
+
+/* TEMA CLARO */
+
+body.light{
+
+    --bg:#f3f5f8;
+    --bg2:#ffffff;
+    --card:#ffffff;
+    --cardHover:#f5f7fa;
+
+    --white:#202020;
+    --text:#444;
+    --gray:#666;
 
 }
 
@@ -44,73 +59,30 @@ body{
 
     font-family:'Poppins',sans-serif;
 
-    background:linear-gradient(135deg,#08101d,#101b2d,#152238);
+    background:linear-gradient(135deg,var(--bg),#16233a);
 
-    color:white;
+    color:var(--white);
 
     min-height:100vh;
 
-}
-
-/* ===========================================
-SCROLL
-=========================================== */
-
-::-webkit-scrollbar{
-
-    width:12px;
+    overflow-x:hidden;
 
 }
 
-::-webkit-scrollbar-track{
-
-    background:#08101d;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-    background:var(--orange);
-
-    border-radius:50px;
-
-}
-
-::-webkit-scrollbar-thumb:hover{
-
-    background:#ff9f45;
-
-}
-
-/* ===========================================
-APP
-=========================================== */
-
-#app{
-
-    display:none;
-
-}
-
-/* ===========================================
-LOADER
-=========================================== */
+/* LOADER */
 
 #loader{
 
     position:fixed;
-
     inset:0;
 
-    background:linear-gradient(135deg,#07101c,#13233f);
+    background:#09111f;
 
     display:flex;
-
+    align-items:center;
     justify-content:center;
 
-    align-items:center;
-
-    z-index:99999;
+    z-index:9999;
 
 }
 
@@ -120,13 +92,11 @@ LOADER
 
 }
 
-.loader-logo img{
+.loader-box img{
 
-    width:180px;
+    width:95px;
 
-    margin-bottom:25px;
-
-    animation:flutuar 2.5s infinite;
+    margin-bottom:20px;
 
 }
 
@@ -134,41 +104,54 @@ LOADER
 
     color:white;
 
-    font-size:32px;
-
-    margin-bottom:10px;
+    font-size:28px;
 
 }
 
 .loader-box p{
 
-    color:#b7c2d5;
+    color:#b9c7d9;
 
-    margin-bottom:30px;
+    margin:10px 0 25px;
 
 }
 
 .spinner{
 
-    width:70px;
+    width:55px;
+    height:55px;
 
-    height:70px;
-
-    margin:auto;
-
-    border:5px solid rgba(255,255,255,.12);
+    border:5px solid rgba(255,255,255,.2);
 
     border-top:5px solid var(--orange);
 
     border-radius:50%;
 
-    animation:girar 1s linear infinite;
+    animation:spin 1s linear infinite;
+
+    margin:auto;
 
 }
 
-/* ===========================================
-HEADER
-=========================================== */
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* APP */
+
+#app{
+
+    display:none;
+
+}
+
+/* HEADER */
 
 header{
 
@@ -178,37 +161,63 @@ header{
 
     z-index:999;
 
+    background:rgba(12,20,34,.90);
+
     backdrop-filter:blur(18px);
 
-    background:rgba(8,16,29,.92);
+    border-bottom:1px solid rgba(255,255,255,.06);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+
+}
+
+header.shadow{
+
+    box-shadow:0 12px 35px rgba(0,0,0,.35);
 
 }
 
 .header-container{
 
-    max-width:1350px;
+    width:min(1400px,94%);
 
     margin:auto;
 
-    padding:20px 35px;
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+}
+
+.header-left{
 
     display:flex;
 
     align-items:center;
 
-    gap:25px;
+    gap:18px;
 
 }
 
 .logo{
 
-    width:190px;
+    width:62px;
+
+    transition:.3s;
 
 }
 
-.header-text h1{
+.logo:hover{
+
+    transform:scale(1.05);
+
+}
+
+.header-left h1{
 
     font-size:30px;
 
@@ -216,53 +225,102 @@ header{
 
 }
 
-.header-text p{
+.header-left p{
 
-    margin-top:4px;
+    color:#b5c2d5;
 
-    color:#c7d1df;
+    font-size:14px;
 
 }
 
-/* ===========================================
-HERO
-=========================================== */
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.header-version{
+
+    text-align:right;
+
+}
+
+.header-version span{
+
+    display:block;
+
+    color:#9eb0c9;
+
+    font-size:13px;
+
+}
+
+.header-version strong{
+
+    color:var(--orange);
+
+    font-size:18px;
+
+}
+
+.theme-toggle{
+
+    width:48px;
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--orange);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+}
+
+.theme-toggle:hover{
+
+    transform:rotate(20deg) scale(1.05);
+
+    background:var(--orangeHover);
+
+}
+
+/* HERO */
 
 .hero{
 
-    position:relative;
-
-    max-width:1350px;
+    width:min(1400px,94%);
 
     margin:35px auto;
 
-    border-radius:30px;
+    position:relative;
 
     overflow:hidden;
 
-    background:linear-gradient(135deg,#142441,#0d1730);
+    background:linear-gradient(135deg,#1b263b,#25385b);
 
-    min-height:310px;
+    border-radius:28px;
+
+    padding:60px;
 
     box-shadow:var(--shadow);
-
-    border:1px solid rgba(255,255,255,.06);
-
-}
-
-.hero-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle at top right,
-
-    rgba(245,130,32,.18),
-
-    transparent 45%);
 
 }
 
@@ -272,17 +330,13 @@ HERO
 
     z-index:2;
 
-    padding:60px;
-
-    max-width:760px;
+    max-width:700px;
 
 }
 
 .hero-content h2{
 
-    font-size:48px;
-
-    line-height:1.2;
+    font-size:42px;
 
     margin-bottom:20px;
 
@@ -290,21 +344,23 @@ HERO
 
 .hero-content p{
 
-    color:#d6deea;
+    color:#dbe3ef;
 
-    font-size:18px;
+    line-height:1.9;
 
-    line-height:1.8;
+    font-size:17px;
 
 }
 
-.coa-watermark{
+.coa-bg{
 
     position:absolute;
 
-    right:40px;
+    right:35px;
 
-    bottom:-20px;
+    top:50%;
+
+    transform:translateY(-50%);
 
     font-size:180px;
 
@@ -316,151 +372,268 @@ HERO
 
 }
 
-/* ===========================================
-ANIMAÇÕES
-=========================================== */
+/* DASHBOARD */
 
-@keyframes girar{
+.dashboard{
 
-    from{
+    width:min(1400px,94%);
 
-        transform:rotate(0deg);
+    margin:35px auto;
 
-    }
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
-
-}
-
-@keyframes flutuar{
-
-    0%{
-
-        transform:translateY(0px);
-
-    }
-
-    50%{
-
-        transform:translateY(-8px);
-
-    }
-
-    100%{
-
-        transform:translateY(0px);
-
-    }
-
-}
-
-@keyframes aparecer{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}    border-radius:18px;
-    padding:18px 22px;
-    margin-bottom:40px;
-}
-
-.pesquisa i{
-    color:#39d353;
-}
-
-.pesquisa input{
-    flex:1;
-    background:none;
-    border:none;
-    outline:none;
-    color:#fff;
-    font-size:1rem;
-}
-
-.pesquisa input::placeholder{
-    color:#cbd6e3;
-}
-
-/* Grade dos robôs */
-.grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
     gap:25px;
+
 }
-/* ==========================================================
-   CARDS DOS ROBÔS
-========================================================== */
 
-.robot-card{
+.dash-card{
 
-    background:rgba(255,255,255,.08);
+    background:var(--card);
 
-    backdrop-filter:blur(20px);
+    border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.12);
+    padding:35px;
 
-    border-radius:25px;
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+
+.dash-card:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--cardHover);
+
+}
+
+.dash-card i{
+
+    color:var(--orange);
+
+    font-size:34px;
+
+    margin-bottom:18px;
+
+}
+
+.dash-card h2{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.dash-card span{
+
+    color:#b8c4d7;
+
+}
+
+/* PESQUISA */
+
+.search-area{
+
+    width:min(1400px,94%);
+
+    margin:35px auto;
+
+}
+
+.search-box{
+
+    background:var(--card);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.search-box i{
+
+    color:var(--orange);
+
+    font-size:20px;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:var(--white);
+
+    font-size:17px;
+
+    font-family:inherit;
+
+}
+
+.search-box input::placeholder{
+
+    color:#9cadc6;
+
+}
+
+/* FILTROS */
+
+#filtros{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+#filtros button{
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:var(--card);
+
+    color:var(--white);
+
+    transition:.25s;
+
+    font-family:inherit;
+
+}
+
+#filtros button:hover,
+#filtros button.ativo{
+
+    background:var(--orange);
+
+    color:white;
+
+}
+
+/* ÚLTIMA AUTOMAÇÃO */
+
+.ultima{
+
+    width:min(1400px,94%);
+
+    margin:35px auto;
+
+    background:var(--card);
+
+    border-radius:20px;
 
     padding:28px;
 
-    transition:.35s;
+    box-shadow:var(--shadow);
+
+}
+
+.ultima h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--orange);
+
+    margin-bottom:18px;
+
+}
+
+#ultimaAutomacao{
+
+    color:var(--text);
+
+}
+
+/* TÍTULO */
+
+.titulo{
+
+    width:min(1400px,94%);
+
+    margin:40px auto 25px;
+
+    font-size:30px;
+
+}
+
+/* LISTA */
+
+#listaRobos{
+
+    width:min(1400px,94%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:28px;
+
+}
+
+/* CARD */
+
+.robot-card{
+
+    background:var(--card);
+
+    border-radius:22px;
+
+    padding:28px;
+
+    box-shadow:var(--shadow);
 
     position:relative;
 
     overflow:hidden;
 
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    transition:.35s;
 
-}
-
-.robot-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-100%;
-
-    width:100%;
-
-    height:4px;
-
-    background:linear-gradient(90deg,#39d353,#00c6ff);
-
-    transition:.5s;
-
-}
-
-.robot-card:hover::before{
-
-    left:0;
+    border:1px solid rgba(255,255,255,.05);
 
 }
 
 .robot-card:hover{
 
-    transform:translateY(-10px);
+    transform:translateY(-8px);
 
-    box-shadow:0 25px 55px rgba(0,0,0,.35);
+    background:var(--cardHover);
 
 }
 
@@ -468,41 +641,15 @@ ANIMAÇÕES
 
     display:flex;
 
-    align-items:center;
+    justify-content:space-between;
 
-    gap:18px;
-
-    margin-bottom:20px;
+    align-items:flex-start;
 
 }
 
-.robot-icon{
+.robot-title h3{
 
-    width:70px;
-
-    height:70px;
-
-    border-radius:18px;
-
-    background:linear-gradient(135deg,#39d353,#16a34a);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-size:32px;
-
-    color:white;
-
-}
-
-.robot-title h2{
-
-    font-size:1.3rem;
-
-    margin-bottom:5px;
+    font-size:24px;
 
 }
 
@@ -525,10 +672,11 @@ ANIMAÇÕES
     min-height:70px;
 
 }
+/* ===========================================
+   STYLE.CSS - PARTE 2/5
+=========================================== */
 
-/* ==========================================================
-   BADGES
-========================================================== */
+/* BADGES */
 
 .badges{
 
@@ -538,111 +686,153 @@ ANIMAÇÕES
 
     gap:10px;
 
-    margin-bottom:20px;
+    margin-bottom:22px;
 
 }
 
 .badge{
 
-    padding:8px 15px;
+    padding:7px 14px;
 
-    border-radius:30px;
+    border-radius:999px;
 
-    font-size:.8rem;
+    font-size:12px;
 
     font-weight:600;
 
-}
-
-.badge.version{
-
-    background:#1d4ed8;
+    letter-spacing:.3px;
 
 }
 
-.badge.xlsm{
+.version{
 
-    background:#0d9488;
+    background:#244d7b;
 
-}
-
-.badge.novo{
-
-    background:#16a34a;
+    color:#fff;
 
 }
 
-.badge.update{
+.xlsm{
 
-    background:#f59e0b;
+    background:#1f7a47;
+
+    color:#fff;
 
 }
 
-/* ==========================================================
-   INFORMAÇÕES
-========================================================== */
+.novo{
+
+    background:var(--orange);
+
+    color:#fff;
+
+}
+
+.pulse{
+
+    animation:pulse 1.4s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        box-shadow:0 0 0 0 rgba(245,130,32,.55);
+
+    }
+
+    70%{
+
+        transform:scale(1.05);
+
+        box-shadow:0 0 0 12px rgba(245,130,32,0);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        box-shadow:0 0 0 0 rgba(245,130,32,0);
+
+    }
+
+}
+
+/* INFO */
 
 .robot-info{
 
     display:grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
 
-    gap:15px;
+    gap:14px;
 
-    margin-bottom:25px;
+    margin-bottom:24px;
 
 }
 
 .info-box{
 
-    background:rgba(255,255,255,.05);
+    background:rgba(255,255,255,.04);
 
     border-radius:15px;
 
-    padding:15px;
+    padding:14px;
+
+    text-align:center;
 
 }
 
 .info-box small{
 
-    color:#aab6c6;
-
     display:block;
 
-    margin-bottom:5px;
+    color:#9eb0c9;
+
+    margin-bottom:6px;
+
+    font-size:12px;
 
 }
 
 .info-box strong{
 
-    font-size:1rem;
+    color:var(--white);
+
+    font-size:15px;
 
 }
 
-/* ==========================================================
-   BOTÃO DOWNLOAD
-========================================================== */
+/* BOTÃO DOWNLOAD */
 
 .download-btn{
 
     width:100%;
 
-    padding:16px;
-
     border:none;
 
-    border-radius:15px;
-
-    background:linear-gradient(135deg,#39d353,#16a34a);
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:700;
+    outline:none;
 
     cursor:pointer;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    background:linear-gradient(135deg,var(--orange),#ff9d3f);
+
+    color:#fff;
 
     transition:.3s;
 
@@ -650,53 +840,404 @@ ANIMAÇÕES
 
 .download-btn:hover{
 
-    transform:scale(1.03);
+    transform:translateY(-2px);
 
-    box-shadow:0 15px 30px rgba(57,211,83,.35);
+    box-shadow:0 15px 30px rgba(245,130,32,.35);
+
+}
+
+.download-btn:active{
+
+    transform:scale(.98);
 
 }
 
 .download-btn i{
 
-    margin-right:10px;
+    margin-right:8px;
 
 }
 
-/* ==========================================================
-   RODAPÉ
-========================================================== */
+/* TAG LATERAL */
+
+.tag{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:7px;
+
+    height:100%;
+
+    background:var(--orange);
+
+}
+
+/* CORES DAS CATEGORIAS */
+
+.robot-card.pcm .tag{
+
+    background:#1d70ff;
+
+}
+
+.robot-card.industrial .tag{
+
+    background:#d62828;
+
+}
+
+.robot-card.indicadores .tag{
+
+    background:#2fb344;
+
+}
+
+.robot-card.logística .tag,
+.robot-card.logistica .tag{
+
+    background:#f58220;
+
+}
+
+.robot-card.relatórios .tag,
+.robot-card.relatorios .tag{
+
+    background:#7b2cbf;
+
+}
+
+/* CARD SELECIONADO */
+
+.robot-card.active{
+
+    transform:scale(1.02);
+
+    border:1px solid var(--orange);
+
+    box-shadow:0 25px 45px rgba(0,0,0,.45);
+
+}
+
+/* ANIMAÇÃO */
+
+.fade-in{
+
+    animation:fade .45s ease;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* HIGHLIGHT DA PESQUISA */
+
+mark{
+
+    background:var(--orange);
+
+    color:#000;
+
+    padding:2px 5px;
+
+    border-radius:6px;
+
+}
+
+/* TOAST */
+
+#toast{
+
+    position:fixed;
+
+    bottom:30px;
+
+    right:30px;
+
+    background:#1db954;
+
+    color:#fff;
+
+    padding:16px 24px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.35);
+
+    opacity:0;
+
+    transform:translateY(30px);
+
+    pointer-events:none;
+
+    transition:.35s;
+
+    z-index:99999;
+
+}
+
+#toast.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* FOOTER */
 
 footer{
 
-    margin-top:80px;
+    width:min(1400px,94%);
+
+    margin:70px auto 30px;
+
+    padding:35px 20px;
 
     text-align:center;
 
-    color:#b8c7d9;
-
-    padding:40px 0;
+    border-top:1px solid rgba(255,255,255,.08);
 
 }
 
-footer p{
+footer div{
 
-    font-size:18px;
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--orange);
 
     margin-bottom:10px;
 
 }
 
-footer span{
+footer p{
 
-    font-size:14px;
+    color:#c4d0df;
 
-    opacity:.8;
+    margin-bottom:8px;
 
 }
 
-/* ==========================================================
-   SCROLLBAR
-========================================================== */
+footer small{
+
+    color:#90a2bb;
+
+}
+/* ===========================================
+   STYLE.CSS - PARTE 3/5
+=========================================== */
+
+/* RESPONSIVIDADE */
+
+@media (max-width:1200px){
+
+    .hero{
+
+        padding:45px;
+
+    }
+
+    .hero-content h2{
+
+        font-size:36px;
+
+    }
+
+    .coa-bg{
+
+        font-size:140px;
+
+    }
+
+}
+
+@media (max-width:992px){
+
+    .header-container{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        align-items:flex-start;
+
+    }
+
+    .header-right{
+
+        width:100%;
+
+        justify-content:space-between;
+
+    }
+
+    .hero{
+
+        padding:35px;
+
+    }
+
+    .hero-content{
+
+        max-width:100%;
+
+    }
+
+    .hero-content h2{
+
+        font-size:32px;
+
+    }
+
+    .coa-bg{
+
+        display:none;
+
+    }
+
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .dashboard{
+
+        grid-template-columns:1fr;
+
+    }
+
+    #listaRobos{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .robot-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .header-left{
+
+        gap:12px;
+
+    }
+
+    .header-left h1{
+
+        font-size:24px;
+
+    }
+
+    .logo{
+
+        width:50px;
+
+    }
+
+    .titulo{
+
+        font-size:24px;
+
+    }
+
+    .hero{
+
+        padding:28px;
+
+    }
+
+    .hero-content h2{
+
+        font-size:28px;
+
+    }
+
+    .hero-content p{
+
+        font-size:15px;
+
+    }
+
+}
+
+@media (max-width:500px){
+
+    .header-container{
+
+        width:92%;
+
+    }
+
+    .search-box{
+
+        padding:14px 18px;
+
+    }
+
+    .dash-card{
+
+        padding:28px;
+
+    }
+
+    .robot-card{
+
+        padding:22px;
+
+    }
+
+    .download-btn{
+
+        padding:15px;
+
+    }
+
+    #toast{
+
+        right:15px;
+
+        left:15px;
+
+        bottom:20px;
+
+        text-align:center;
+
+    }
+
+}
+
+/* SCROLLBAR */
 
 ::-webkit-scrollbar{
 
@@ -706,35 +1247,98 @@ footer span{
 
 ::-webkit-scrollbar-track{
 
-    background:#081321;
+    background:#0d1523;
 
 }
 
 ::-webkit-scrollbar-thumb{
 
-    background:#39d353;
+    background:var(--orange);
 
     border-radius:20px;
 
 }
 
-/* ==========================================================
-   ANIMAÇÕES
-========================================================== */
+::-webkit-scrollbar-thumb:hover{
 
-.robot-card{
-
-    animation:fadeUp .8s ease;
+    background:#ff9f45;
 
 }
 
-@keyframes fadeUp{
+/* SELEÇÃO */
+
+::selection{
+
+    background:var(--orange);
+
+    color:#fff;
+
+}
+
+/* LINKS */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+/* IMAGENS */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+/* BOTÕES */
+
+button{
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+/* INPUT */
+
+input{
+
+    font-family:'Poppins',sans-serif;
+
+}
+/* ===========================================
+   STYLE.CSS - PARTE 4/5
+=========================================== */
+
+/* ANIMAÇÕES */
+
+@keyframes subir{
 
     from{
 
         opacity:0;
+        transform:translateY(25px);
 
-        transform:translateY(35px);
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
 
     }
 
@@ -742,921 +1346,177 @@ footer span{
 
         opacity:1;
 
+    }
+
+}
+
+@keyframes flutuar{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-6px);
+
+    }
+
+    100%{
+
         transform:translateY(0);
 
     }
 
 }
 
-/* ==========================================================
-   RESPONSIVO
-========================================================== */
+/* DASHBOARD */
 
-@media(max-width:900px){
+.dash-card{
 
-header{
-
-    flex-direction:column;
-
-    gap:25px;
+    animation:subir .5s ease;
 
 }
 
-.hero h2{
+.dash-card:nth-child(2){
 
-    font-size:2.2rem;
-
-}
-
-.background-coa{
-
-    font-size:10rem;
+    animation-delay:.08s;
 
 }
 
-}
+.dash-card:nth-child(3){
 
-@media(max-width:650px){
-
-#app{
-
-    padding:20px;
+    animation-delay:.16s;
 
 }
 
-.hero h2{
-
-    font-size:1.8rem;
-
-}
-
-.logo{
-
-    flex-direction:column;
-
-    text-align:center;
-
-}
-
-.robot-info{
-
-    grid-template-columns:1fr;
-
-}
-
-.background-coa{
-
-    font-size:6rem;
-#app{
-    display:none;
-
-}
-
-}
-/* ================================
-   MODAL
-================================ */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-}
-
-.modal-content{
-    width:min(600px,90%);
-    background:rgba(15,25,40,.95);
-    backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:20px;
-    padding:25px;
-    animation:fadeUp .3s ease;
-}
-
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.close-btn{
-    background:none;
-    border:none;
-    color:white;
-    font-size:20px;
-    cursor:pointer;
-}
-
-.modal-body p{
-    color:#d3dceb;
-    margin-bottom:20px;
-    line-height:1.6;
-}
-
-.modal-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-}
-
-.modal-grid div{
-    background:rgba(255,255,255,.05);
-    padding:15px;
-    border-radius:12px;
-}
-
-.modal-grid strong{
-    display:block;
-    color:#39d353;
-    margin-bottom:5px;
-}
-
-.modal-footer{
-    margin-top:20px;
-    text-align:center;
-}
-   /* ===========================================
-   STYLE.CSS - PARTE 2/4
-   PESQUISA + DASHBOARD + TÍTULOS
-===========================================*/
-
-/* CONTAINER */
-
-.search-section,
-.dashboard,
-.titulo,
-#listaRobos{
-
-    max-width:1350px;
-
-    margin:auto;
-
-}
-
-/* ==========================
-PESQUISA
-==========================*/
-
-.search-section{
-
-    margin-top:35px;
-
-    margin-bottom:35px;
-
-    padding:0 25px;
-
-}
-
-.search-box{
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(18px);
-
-    border:2px solid transparent;
-
-    border-radius:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    padding:18px 22px;
-
-    transition:.30s;
-
-}
-
-.search-box:hover{
-
-    border-color:#f58220;
-
-}
-
-.search-box:focus-within{
-
-    border-color:#f58220;
-
-    box-shadow:0 0 25px rgba(245,130,32,.30);
-
-}
-
-.search-box i{
-
-    color:#f58220;
-
-    font-size:22px;
-
-}
-
-.search-box input{
-
-    flex:1;
-
-    background:none;
-
-    border:none;
-
-    outline:none;
-
-    color:white;
-
-    font-size:17px;
-
-    font-family:Poppins;
-
-}
-
-.search-box input::placeholder{
-
-    color:#98a6bc;
-
-}
-
-/* ==========================
-DASHBOARD
-==========================*/
-
-.dashboard{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:25px;
-
-    margin-bottom:45px;
-
-    padding:0 25px;
-
-}
-
-.info-card{
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border-radius:22px;
-
-    padding:28px;
-
-    text-align:center;
-
-    transition:.35s;
-
-    border:1px solid rgba(255,255,255,.06);
-
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-
-}
-
-.info-card:hover{
-
-    transform:translateY(-8px);
-
-    border-color:#f58220;
-
-    box-shadow:0 20px 40px rgba(245,130,32,.18);
-
-}
-
-.info-card i{
-
-    font-size:34px;
-
-    color:#f58220;
-
-    margin-bottom:18px;
-
-}
-
-.info-card span{
-
-    display:block;
-
-    font-size:34px;
-
-    font-weight:700;
-
-    color:white;
-
-}
-
-.info-card small{
-
-    display:block;
-
-    margin-top:8px;
-
-    color:#cfd7e5;
-
-    font-size:15px;
-
-}
-
-.online span{
-
-    color:#3ddc84;
-
-}
-
-/* ==========================
-TÍTULO
-==========================*/
-
-.titulo{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    margin-bottom:30px;
-
-    padding:0 25px;
-
-}
-
-.titulo h2{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    font-size:32px;
-
-    color:white;
-
-}
-
-.titulo h2 i{
-
-    color:#f58220;
-
-}
-
-/* ==========================
-LISTA DOS ROBÔS
-==========================*/
-
-#listaRobos{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-
-    gap:30px;
-
-    padding:0 25px 60px;
-
-    animation:aparecer .8s ease;
-
-}
-
-/* ==========================
-EFEITOS GERAIS
-==========================*/
-
-.glass{
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-}
-
-/* ==========================
-RESPONSIVO INICIAL
-==========================*/
-
-@media(max-width:1100px){
-
-.dashboard{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.hero-content h2{
-
-font-size:38px;
-
-}
-
-}
-
-@media(max-width:768px){
-
-.header-container{
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.logo{
-
-width:170px;
-
-}
-
-.hero{
-
-margin:20px;
-
-}
+/* HERO */
 
 .hero-content{
 
-padding:35px;
+    animation:subir .7s ease;
 
 }
-
-.hero-content h2{
-
-font-size:30px;
-
-}
-
-.hero-content p{
-
-font-size:16px;
-
-}
-
-.dashboard{
-
-grid-template-columns:1fr;
-
-padding:0 20px;
-
-}
-
-.search-section{
-
-padding:0 20px;
-
-}
-
-#listaRobos{
-
-padding:0 20px 50px;
-
-}
-
-.coa-watermark{
-
-font-size:110px;
-
-right:15px;
-
-}
-
-}
-   /* ===========================================
-   STYLE.CSS - PARTE 3/4
-   CARDS + BOTÕES + BADGES
-===========================================*/
-
-/* CARD */
-
-.robot-card{
-
-    background:rgba(255,255,255,.05);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:22px;
-
-    padding:25px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    transition:.35s;
-
-    box-shadow:0 15px 30px rgba(0,0,0,.20);
-
-    animation:aparecer .5s ease;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.robot-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:4px;
-
-    background:linear-gradient(90deg,#f58220,#ffb347);
-
-}
-
-.robot-card:hover{
-
-    transform:translateY(-10px);
-
-    border-color:#f58220;
-
-    box-shadow:0 25px 45px rgba(245,130,32,.18);
-
-}
-
-/* HEADER */
-
-.robot-header{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-    margin-bottom:20px;
-
-}
-
-.robot-icon{
-
-    width:70px;
-
-    height:70px;
-
-    border-radius:18px;
-
-    background:linear-gradient(135deg,#f58220,#ff9d3f);
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    color:white;
-
-    font-size:30px;
-
-    flex-shrink:0;
-
-}
-
-.robot-title{
-
-    flex:1;
-
-}
-
-.robot-title h2{
-
-    font-size:22px;
-
-    margin-bottom:6px;
-
-    color:white;
-
-}
-
-.robot-title span{
-
-    color:#f58220;
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-/* DESCRIÇÃO */
-
-.robot-description{
-
-    color:#d9dfe8;
-
-    line-height:1.7;
-
-    margin-bottom:22px;
-
-    min-height:75px;
-
-}
-
-/* BADGES */
-
-.badges{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:25px;
-
-}
-
-.badge{
-
-    padding:7px 14px;
-
-    border-radius:40px;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    letter-spacing:.5px;
-
-}
-
-.version{
-
-    background:#284f85;
-
-    color:white;
-
-}
-
-.xlsm{
-
-    background:#1d6f42;
-
-    color:white;
-
-}
-
-.novo{
-
-    background:#f58220;
-
-    color:white;
-
-}
-
-/* INFO */
-
-.robot-info{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:15px;
-
-    margin-bottom:25px;
-
-}
-
-.info-box{
-
-    background:rgba(255,255,255,.04);
-
-    border-radius:14px;
-
-    padding:15px;
-
-    text-align:center;
-
-}
-
-.info-box small{
-
-    display:block;
-
-    color:#aab5c6;
-
-    margin-bottom:6px;
-
-    font-size:12px;
-
-}
-
-.info-box strong{
-
-    color:white;
-
-    font-size:15px;
-
-}
-
-/* LINK */
-
-.robot-card a{
-
-    text-decoration:none;
-
-}
-
-/* BOTÃO */
-
-.download-btn{
-
-    width:100%;
-
-    height:54px;
-
-    border:none;
-
-    border-radius:14px;
-
-    cursor:pointer;
-
-    background:linear-gradient(135deg,#f58220,#ff9d3f);
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-    transition:.30s;
-
-    font-family:Poppins;
-
-}
-
-.download-btn:hover{
-
-    transform:scale(1.03);
-
-    box-shadow:0 15px 30px rgba(245,130,32,.35);
-
-}
-
-.download-btn i{
-
-    font-size:18px;
-
-}
-
-/* EFEITO AO CLICAR */
-
-.download-btn:active{
-
-    transform:scale(.98);
-
-}
-   /* ===========================================
-   STYLE.CSS - PARTE 4/4
-   FOOTER + EFEITOS + RESPONSIVO FINAL
-===========================================*/
-
-/* ==========================
-FOOTER
-==========================*/
-
-footer{
-
-    margin-top:60px;
-
-    padding:50px 20px;
-
-    text-align:center;
-
-    border-top:1px solid rgba(255,255,255,.08);
-
-    background:rgba(0,0,0,.20);
-
-    backdrop-filter:blur(15px);
-
-}
-
-footer p{
-
-    font-size:22px;
-
-    font-weight:600;
-
-    color:#ffffff;
-
-    margin-bottom:10px;
-
-}
-
-footer span{
-
-    display:block;
-
-    color:#c6cfdd;
-
-    margin-bottom:15px;
-
-}
-
-footer small{
-
-    color:#7d8ea8;
-
-}
-
-/* ==========================
-EFEITO BOTÃO
-==========================*/
-
-.download-btn{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.download-btn::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:-120%;
-
-    width:60%;
-
-    height:100%;
-
-    background:linear-gradient(
-
-        90deg,
-
-        transparent,
-
-        rgba(255,255,255,.35),
-
-        transparent
-
-    );
-
-    transition:.8s;
-
-}
-
-.download-btn:hover::before{
-
-    left:160%;
-
-}
-
-/* ==========================
-LOGO
-==========================*/
 
 .logo{
 
-    transition:.35s;
+    animation:flutuar 5s infinite ease-in-out;
 
 }
 
-.logo:hover{
+/* CARDS */
+
+.robot-card{
+
+    animation:subir .45s ease;
+
+}
+
+.robot-card:hover .robot-title h3{
+
+    color:var(--orange);
+
+}
+
+.robot-card:hover .tag{
+
+    width:10px;
+
+}
+
+.robot-card:hover .badge{
 
     transform:scale(1.05);
 
 }
 
-/* ==========================
-HERO
-==========================*/
+/* BADGES */
 
-.hero{
+.badge{
 
-    animation:aparecer .8s ease;
+    transition:.3s;
+
+}
+
+/* INFO */
+
+.info-box{
+
+    transition:.3s;
+
+}
+
+.info-box:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* INPUT */
+
+.search-box{
+
+    transition:.3s;
+
+}
+
+.search-box:focus-within{
+
+    border:1px solid var(--orange);
+
+    box-shadow:0 0 0 4px rgba(245,130,32,.15);
+
+}
+
+/* FILTROS */
+
+#filtros button{
+
+    font-weight:500;
+
+}
+
+#filtros button:active{
+
+    transform:scale(.95);
+
+}
+
+/* HEADER */
+
+header{
+
+    transition:.35s;
+
+}
+
+header.shadow{
+
+    backdrop-filter:blur(25px);
+
+}
+
+/* HERO */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(245,130,32,.08);
+
+    right:-120px;
+
+    top:-120px;
 
 }
 
@@ -1666,830 +1526,298 @@ HERO
 
     position:absolute;
 
-    inset:0;
+    width:220px;
 
-    background:
+    height:220px;
 
-    linear-gradient(
+    border-radius:50%;
 
-        120deg,
+    background:rgba(255,255,255,.03);
 
-        transparent,
+    left:-80px;
 
-        rgba(255,255,255,.03),
-
-        transparent
-
-    );
-
-    pointer-events:none;
+    bottom:-80px;
 
 }
 
-/* ==========================
-CARD
-==========================*/
+/* TÍTULOS */
 
-.robot-card{
+.titulo{
 
-    transition:
+    display:flex;
 
-        transform .35s,
+    align-items:center;
 
-        box-shadow .35s,
+    gap:12px;
 
-        border-color .35s;
+}
+
+.titulo::before{
+
+    content:"";
+
+    width:8px;
+
+    height:35px;
+
+    border-radius:10px;
+
+    background:var(--orange);
+
+}
+
+/* ÚLTIMA AUTOMAÇÃO */
+
+#ultimaAutomacao strong{
+
+    color:var(--orange);
+
+    font-size:20px;
+
+}
+
+#ultimaAutomacao small{
+
+    color:#aab8ca;
+
+}
+
+/* MODO CARD ABERTO */
+
+body.card-open .robot-card:not(.active){
+
+    opacity:.45;
+
+    filter:blur(2px);
+
+    transform:scale(.98);
+
+}
+
+body.card-open .robot-card.active{
+
+    opacity:1;
+
+    filter:none;
+
+}
+
+/* EFEITO GERAL */
+
+.robot-card,
+.dash-card,
+.hero,
+.search-box,
+.ultima{
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+/* ===========================================
+   STYLE.CSS - PARTE 5/5
+=========================================== */
+
+/* MODO CLARO */
+
+body.light{
+
+    background:#eef2f7;
+
+    color:#222;
+
+}
+
+body.light header{
+
+    background:rgba(255,255,255,.95);
+
+    border-bottom:1px solid #e4e8ef;
+
+}
+
+body.light .hero{
+
+    background:linear-gradient(135deg,#ffffff,#eef3f9);
+
+}
+
+body.light .hero-content h2{
+
+    color:#1b1b1b;
+
+}
+
+body.light .hero-content p{
+
+    color:#555;
+
+}
+
+body.light .coa-bg{
+
+    color:rgba(0,0,0,.04);
+
+}
+
+body.light .dash-card,
+body.light .robot-card,
+body.light .search-box,
+body.light .ultima{
+
+    background:#ffffff;
+
+    color:#222;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+body.light .robot-description{
+
+    color:#555;
+
+}
+
+body.light .robot-title span{
+
+    color:#666;
+
+}
+
+body.light .info-box{
+
+    background:#f5f7fb;
+
+}
+
+body.light .info-box small{
+
+    color:#777;
+
+}
+
+body.light .info-box strong{
+
+    color:#222;
+
+}
+
+body.light .search-box input{
+
+    color:#222;
+
+}
+
+body.light .search-box input::placeholder{
+
+    color:#888;
+
+}
+
+body.light #filtros button{
+
+    background:#f4f5f7;
+
+    color:#333;
+
+}
+
+body.light #filtros button:hover,
+body.light #filtros button.ativo{
+
+    background:var(--orange);
+
+    color:#fff;
+
+}
+
+body.light footer{
+
+    border-top:1px solid #ddd;
+
+}
+
+body.light footer p{
+
+    color:#666;
+
+}
+
+body.light footer small{
+
+    color:#888;
+
+}
+
+body.light .header-left h1{
+
+    color:#222;
+
+}
+
+body.light .header-left p{
+
+    color:#666;
+
+}
+
+/* ACABAMENTO */
+
+.robot-card,
+.dash-card,
+.hero,
+.search-box,
+.ultima{
+
+    transition:all .30s ease;
 
 }
 
 .robot-card:hover{
 
-    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
 
 }
 
-/* ==========================
-ÍCONE ROBÔ
-==========================*/
+.dash-card:hover{
 
-.robot-icon{
-
-    transition:.35s;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
 
 }
 
-.robot-card:hover .robot-icon{
+.hero{
 
-    transform:rotate(8deg) scale(1.08);
-
-}
-
-/* ==========================
-INFO BOX
-==========================*/
-
-.info-box{
-
-    transition:.25s;
-
-}
-
-.robot-card:hover .info-box{
-
-    background:rgba(255,255,255,.07);
-
-}
-
-/* ==========================
-BADGES
-==========================*/
-
-.badge{
-
-    transition:.25s;
-
-}
-
-.badge:hover{
-
-    transform:translateY(-2px);
-
-}
-
-/* ==========================
-TÍTULO
-==========================*/
-
-.robot-title h2{
-
-    transition:.25s;
-
-}
-
-.robot-card:hover .robot-title h2{
-
-    color:#f58220;
-
-}
-
-/* ==========================
-SELEÇÃO
-==========================*/
-
-::selection{
-
-    background:#f58220;
-
-    color:white;
-
-}
-
-/* ==========================
-FOCUS
-==========================*/
-
-button:focus,
-
-input:focus{
-
-    outline:none;
-
-}
-
-/* ==========================
-RESPONSIVO TABLET
-==========================*/
-
-@media(max-width:900px){
-
-.robot-info{
-
-grid-template-columns:1fr;
-
-}
-
-.robot-description{
-
-min-height:auto;
-
-}
-
-}
-
-/* ==========================
-RESPONSIVO CELULAR
-==========================*/
-
-@media(max-width:600px){
-
-.header-text h1{
-
-font-size:24px;
-
-}
-
-.header-text p{
-
-font-size:14px;
+    overflow:hidden;
 
 }
 
 .hero-content{
 
-padding:28px;
-
-}
-
-.hero-content h2{
-
-font-size:26px;
-
-}
-
-.hero-content p{
-
-font-size:15px;
-
-line-height:1.6;
-
-}
-
-.robot-header{
-
-flex-direction:column;
-
-text-align:center;
-
-}
-
-.robot-icon{
-
-margin:auto;
-
-}
-
-.robot-title{
-
-text-align:center;
-
-}
-
-.robot-info{
-
-grid-template-columns:1fr;
-
-}
-
-.download-btn{
-
-font-size:15px;
-
-height:52px;
-
-}
-
-footer{
-
-padding:40px 20px;
-
-}
-
-}
-
-/* ==========================
-TELAS GRANDES
-==========================*/
-
-@media(min-width:1600px){
-
-.header-container,
-
-.hero,
-
-.dashboard,
-
-.search-section,
-
-.titulo,
-
-#listaRobos{
-
-max-width:1550px;
-
-}
-
-}
-
-/* ==========================
-FIM
-==========================*/
-   /* ==========================================
-   COA HUB v3.0 - STYLE.CSS FINAL
-   TEREOS BRASIL
-========================================== */
-
-/* RESET */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-/* VARIÁVEIS */
-
-:root{
-
-    --bg:#0b1220;
-    --card:#111a2e;
-    --card2:#16213a;
-
-    --orange:#f58220;
-    --orange2:#ff9a3c;
-
-    --text:#e6edf7;
-    --muted:#9aa8bd;
-
-    --shadow:0 20px 50px rgba(0,0,0,.35);
-    --radius:18px;
-
-}
-
-/* BODY */
-
-body{
-
-    background:linear-gradient(135deg,#070c16,#0e1628,#0b1220);
-    color:var(--text);
-
-}
-
-/* LOADER */
-
-#loader{
-    position:fixed;
-    inset:0;
-    background:#070c16;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-}
-
-.loader-box{
-    text-align:center;
-}
-
-.loader-box img{
-    width:140px;
-    margin-bottom:20px;
-    animation:pulse 2s infinite;
-}
-
-.spinner{
-    width:50px;
-    height:50px;
-    border:4px solid #23314f;
-    border-top:4px solid var(--orange);
-    border-radius:50%;
-    margin:20px auto;
-    animation:spin 1s linear infinite;
-}
-
-/* HEADER */
-
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 40px;
-    background:rgba(10,15,25,.7);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(255,255,255,.05);
-    position:sticky;
-    top:0;
-    z-index:10;
-}
-
-.header-left{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo{
-    width:60px;
-}
-
-.header-left h1{
-    font-size:20px;
-}
-
-.header-left p{
-    font-size:12px;
-    color:var(--muted);
-}
-
-/* HERO */
-
-.hero{
-    margin:30px;
-    padding:60px;
-    border-radius:var(--radius);
-    background:linear-gradient(135deg,#101b33,#0d1426);
     position:relative;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-}
 
-.hero h2{
-    font-size:34px;
-    margin-bottom:15px;
-}
+    z-index:2;
 
-.hero p{
-    color:var(--muted);
-    max-width:600px;
 }
 
 .coa-bg{
-    position:absolute;
-    right:20px;
-    bottom:-40px;
-    font-size:160px;
-    opacity:.05;
-    font-weight:800;
-}
-
-/* DASHBOARD */
-
-.dashboard{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-    margin:30px;
-}
-
-.dash-card{
-    background:var(--card);
-    padding:25px;
-    border-radius:var(--radius);
-    text-align:center;
-    box-shadow:var(--shadow);
-    transition:.3s;
-}
-
-.dash-card:hover{
-    transform:translateY(-5px);
-    background:var(--card2);
-}
-
-.dash-card i{
-    font-size:28px;
-    color:var(--orange);
-    margin-bottom:10px;
-}
-
-.dash-card h2{
-    font-size:30px;
-}
-
-.dash-card span{
-    font-size:13px;
-    color:var(--muted);
-}
-
-/* SEARCH */
-
-.search-area{
-    margin:30px;
-}
-
-.search-box{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    background:var(--card);
-    padding:15px;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-}
-
-.search-box input{
-    width:100%;
-    border:none;
-    outline:none;
-    background:transparent;
-    color:white;
-}
-
-/* FILTROS */
-
-#filtros{
-    margin-top:15px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-
-#filtros button{
-    background:var(--card);
-    border:none;
-    padding:8px 15px;
-    border-radius:20px;
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-}
-
-#filtros button:hover,
-#filtros button.ativo{
-    background:var(--orange);
-}
-
-/* ÚLTIMA AUTOMAÇÃO */
-
-.ultima{
-    margin:30px;
-    padding:20px;
-    background:var(--card);
-    border-radius:var(--radius);
-}
-
-/* CARDS */
-
-#listaRobos{
-    margin:30px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-}
-
-.robot-card{
-    background:var(--card);
-    padding:20px;
-    border-radius:var(--radius);
-    transition:.3s;
-}
-
-.robot-card:hover{
-    transform:translateY(-6px);
-    background:var(--card2);
-}
-
-.robot-card h3{
-    margin-bottom:10px;
-}
-
-.robot-card p{
-    font-size:13px;
-    color:var(--muted);
-}
-
-/* INFO */
-
-.info{
-    display:flex;
-    justify-content:space-between;
-    margin-top:10px;
-    font-size:12px;
-    color:var(--muted);
-}
-
-/* BOTÃO */
-
-button{
-    margin-top:15px;
-    width:100%;
-    padding:10px;
-    border:none;
-    background:linear-gradient(135deg,var(--orange),var(--orange2));
-    color:white;
-    border-radius:12px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    transform:scale(1.03);
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--muted);
-}
-
-/* TOAST */
-
-#toast{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:var(--orange);
-    padding:12px 20px;
-    border-radius:10px;
-    opacity:0;
-    transform:translateY(20px);
-    transition:.3s;
-}
-
-#toast.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ANIMAÇÕES */
-
-@keyframes spin{
-    to{transform:rotate(360deg);}
-}
-
-@keyframes pulse{
-    0%,100%{opacity:1;}
-    50%{opacity:.5;}
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-    .dashboard{
-        grid-template-columns:1fr;
-    }
-
-    header{
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-    }
-
-    .hero{
-        padding:30px;
-    }
-
-}
-   .robot-card{
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-.robot-card:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-
-    border-color:#f58220;
-
-}
-
-
-/* =========================
-ANIMAÇÃO DE ENTRADA
-========================= */
-
-.fade-in{
-    opacity:0;
-    transform:translateY(20px);
-    animation:fadeIn .5s forwards;
-}
-
-@keyframes fadeIn{
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* =========================
-HOVER PROFUNDO
-========================= */
-
-.robot-card{
-
-    transition:.3s;
-
-    cursor:default;
-
-}
-
-.robot-card:hover{
-
-    transform:translateY(-10px) scale(1.01);
-
-    box-shadow:0 25px 60px rgba(0,0,0,.45);
-
-    border-color:#f58220;
-
-}
-
-/* =========================
-SELECIONADO
-========================= */
-
-.robot-card.selected{
-
-    border:2px solid #f58220;
-
-    box-shadow:0 0 0 2px rgba(245,130,32,.2),
-               0 25px 60px rgba(0,0,0,.5);
-
-}
-
-/* =========================
-NOVO PULSANDO
-========================= */
-
-.pulse{
-
-    animation:pulse 1.5s infinite;
-
-}
-
-@keyframes pulse{
-
-    0%{ transform:scale(1); }
-
-    50%{ transform:scale(1.08); }
-
-    100%{ transform:scale(1); }
-
-}
-
-/* =========================
-BOTÃO MELHORADO
-========================= */
-
-.download-btn{
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.3s;
-
-}
-
-.download-btn:hover{
-
-    background:#f58220;
-
-    transform:translateY(-2px);
-
-}
-
-/* =========================
-FILTROS SUAVES (se usar depois)
-========================= */
-
-.robot-card.hide{
-
-    opacity:0;
-
-    transform:scale(.95);
 
     pointer-events:none;
 
 }
 
-/* =========================
-THEME SYSTEM
-========================= */
-
-:root{
-
-    --bg:#0f1115;
-
-    --card:#171a21;
-
-    --text:#ffffff;
-
-    --muted:#b8c0cc;
-
-    --accent:#f58220;
-
-}
-
-body.light{
-
-    --bg:#f4f6f9;
-
-    --card:#ffffff;
-
-    --text:#1c1f26;
-
-    --muted:#4b5563;
-
-    --accent:#f58220;
-
-}
-
-body{
-
-    background:var(--bg);
-
-    color:var(--text);
-
-    transition:.3s;
-
-}
-
-/* CARDS */
-
-.robot-card{
-
-    background:var(--card);
-
-    color:var(--text);
-
-}
-
-/* HEADER BUTTON */
-
 .theme-toggle{
 
-    position:absolute;
-
-    right:20px;
-
-    top:20px;
-
-    background:var(--card);
-
-    padding:10px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    transition:.3s;
+    box-shadow:0 10px 25px rgba(245,130,32,.35);
 
 }
 
 .theme-toggle:hover{
 
-    transform:scale(1.1);
+    box-shadow:0 15px 35px rgba(245,130,32,.45);
 
 }
 
-.theme-toggle{
-
-    position:absolute;
-
-    top:20px;
-
-    right:20px;
-
-    width:42px;
-
-    height:42px;
+.download-btn{
 
     display:flex;
 
@@ -2497,78 +1825,56 @@ body{
 
     justify-content:center;
 
-    background:var(--card);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    z-index:999;
-
-    transition:.3s;
+    gap:10px;
 
 }
 
-.theme-toggle i{
+.download-btn i{
 
-    color:var(--text);
-
-}
-
-.theme-toggle:hover{
-
-    transform:scale(1.1);
-
-    background:var(--accent);
-
-    color:#000;
-
-}
-   
-/* FUNDO EMBASSADO */
-
-body.card-open::before{
-
-    content:"";
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    width:100%;
-
-    height:100%;
-
-    background:rgba(0,0,0,.6);
-
-    backdrop-filter:blur(6px);
-
-    z-index:50;
-
-}
-
-/* CARD EM FOCO */
-
-.robot-card{
-
-    transition:.3s;
-
-    position:relative;
-
-    z-index:1;
+    font-size:16px;
 
 }
 
 .robot-card.active{
 
-    transform:scale(1.08) translateY(-10px);
+    outline:2px solid var(--orange);
 
-    z-index:100;
-
-    box-shadow:0 30px 80px rgba(0,0,0,.6);
+    outline-offset:3px;
 
 }
+
+#toast{
+
+    font-size:15px;
+
+    letter-spacing:.3px;
+
+}
+
+.fade-in{
+
+    animation:fade .4s ease both;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* FIM DO ARQUIVO */
