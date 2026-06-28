@@ -285,3 +285,25 @@ function toggleTheme(){
     }
 
 })();
+function toggleTheme(){
+
+    document.body.classList.toggle("light");
+
+    const isLight = document.body.classList.contains("light");
+
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+
+}
+
+/* carregar tema salvo */
+(function(){
+
+    const theme = localStorage.getItem("theme");
+
+    if(theme === "light"){
+
+        document.body.classList.add("light");
+
+    }
+
+})();
