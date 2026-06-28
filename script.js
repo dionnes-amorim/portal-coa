@@ -1,6 +1,13 @@
+/* ==========================================
+   PORTAL DE AUTOMAÇÕES COA
+   TEREOS BRASIL
+========================================== */
+
 const lista = document.getElementById("listaRobos");
 const pesquisa = document.getElementById("pesquisa");
-const total = document.getElementById("totalRobos");
+
+const totalRobos = document.getElementById("totalRobos");
+const totalArquivos = document.getElementById("totalArquivos");
 const dataAtual = document.getElementById("dataAtual");
 
 const loader = document.getElementById("loader");
@@ -8,151 +15,201 @@ const app = document.getElementById("app");
 
 let robos = [];
 
-/* ================================
-   DATA ATUAL
-================================ */
+/* ==========================================
+DATA
+========================================== */
 
-function atualizarData() {
-    dataAtual.textContent = new Date().toLocaleDateString("pt-BR");
+function atualizarData(){
+
+    const hoje = new Date();
+
+    dataAtual.textContent = hoje.toLocaleDateString("pt-BR");
+
 }
 
-/* ================================
-   CARREGA ROBÔS
-================================ */
+/* ==========================================
+ÍCONE POR CATEGORIA
+========================================== */
 
-fetch("data/robos.json")
-    .then(response => response.json())
-    .then(dados => {
+function iconeCategoria(categoria){
 
-        robos = dados;
+    switch(categoria.toLowerCase()){
 
-        total.textContent = robos.length;
+        case "pcm":
+            return "fa-screwdriver-wrench";
 
-        atualizarData();
+        case "industrial":
+            return "fa-industry";
 
-        desenhar(robos);
+        case "indicadores":
+            return "fa-chart-column";
 
-        setTimeout(() => {
+        case "logística":
+        case "logistica":
+            return "fa-truck";
 
-            loader.style.display = "none";
-            app.style.display = "block";
+        case "relatórios":
+        case "relatorios":
+            return "fa-file-lines";
 
-        }, 600);
+        default:
+            return "fa-robot";
 
-    })
-    .catch(error => {
+    }
 
-        console.error(error);
+}
 
-        loader.style.display = "none";
+/* ==========================================
+RENDERIZAÇÃO
+========================================== */
 
-        app.style.display = "block";
-
-        lista.innerHTML = `
-            <h2 style="text-align:center;">
-                Erro ao carregar os robôs.
-            </h2>
-        `;
-
-    });
-
-/* ================================
-   DESENHA OS CARDS
-================================ */
-
-function desenhar(listaRobos) {
+function renderizar(listaAtual){
 
     lista.innerHTML = "";
 
-    listaRobos.forEach(r => {
+    listaAtual.forEach(r=>{
 
         lista.innerHTML += `
 
-        <div class="robot-card">
+<div class="robot-card">
 
-            <div class="robot-header">
+    <div class="robot-header">
 
-                <div class="robot-icon">
-                    <i class="fa-solid fa-robot"></i>
-                </div>
+        <div class="robot-icon">
 
-                <div class="robot-title">
-
-                    <h2>${r.nome}</h2>
-
-                    <span>${r.categoria}</span>
-
-                </div>
-
-            </div>
-
-            <p class="robot-description">
-                ${r.descricao}
-            </p>
-
-            <div class="badges">
-
-                <span class="badge version">
-                    v${r.versao}
-                </span>
-
-                <span class="badge xlsm">
-                    XLSM
-                </span>
-
-                ${r.novo ? '<span class="badge novo">NOVO</span>' : ''}
-
-            </div>
-
-            <div class="robot-info">
-
-                <div class="info-box">
-
-                    <small>Tamanho</small>
-
-                    <strong>${r.tamanho}</strong>
-
-                </div>
-
-                <div class="info-box">
-
-                    <small>Atualização</small>
-
-                    <strong>${r.atualizacao}</strong>
-
-                </div>
-
-            </div>
-
-            <a href="arquivos/${r.arquivo}" download>
-
-                <button class="download-btn">
-
-                    <i class="fa-solid fa-download"></i>
-
-                    Baixar Automação
-
-                </button>
-
-            </a>
+            <i class="fa-solid ${iconeCategoria(r.categoria)}"></i>
 
         </div>
 
-        `;
+        <div class="robot-title">
+
+            <h2>${r.nome}</h2>
+
+            <span>${r.categoria}</span>
+
+        </div>
+
+    </div>
+
+    <p class="robot-description">
+
+        ${r.descricao}
+
+    </p>
+
+    <div class="badges">
+
+        <span class="badge version">
+
+            v${r.versao}
+
+        </span>
+
+        <span class="badge xlsm">
+
+            XLSM
+
+        </span>
+
+        ${r.novo ? '<span class="badge novo">NOVO</span>' : ''}
+
+    </div>
+
+    <div class="robot-info">
+
+        <div class="info-box">
+
+            <small>Tamanho</small>
+
+            <strong>${r.tamanho}</strong>
+
+        </div>
+
+        <div class="info-box">
+
+            <small>Atualização</small>
+
+            <strong>${r.atualizacao}</strong>
+
+        </div>
+
+    </div>
+
+    <a href="arquivos/${r.arquivo}" download>
+
+        <button class="download-btn">
+
+            <i class="fa-solid fa-download"></i>
+
+            Baixar Automação
+
+        </button>
+
+    </a>
+
+</div>
+
+`;
 
     });
 
 }
 
-/* ================================
-   PESQUISA
-================================ */
+/* ==========================================
+CARREGA JSON
+========================================== */
 
-pesquisa.addEventListener("input", () => {
+fetch("data/robos.json")
+
+.then(res=>res.json())
+
+.then(dados=>{
+
+    robos = dados;
+
+    atualizarData();
+
+    totalRobos.textContent = robos.length;
+
+    totalArquivos.textContent = robos.length;
+
+    renderizar(robos);
+
+    setTimeout(()=>{
+
+        loader.style.display="none";
+
+        app.style.display="block";
+
+    },700);
+
+})
+
+.catch(()=>{
+
+    loader.innerHTML=`
+
+        <div style="text-align:center">
+
+            <h2>Erro ao carregar as automações.</h2>
+
+            <p>Verifique o arquivo robos.json</p>
+
+        </div>
+
+    `;
+
+});
+
+/* ==========================================
+PESQUISA
+========================================== */
+
+pesquisa.addEventListener("keyup",()=>{
 
     const texto = pesquisa.value.toLowerCase();
 
-    const filtrado = robos.filter(r =>
+    const filtrados = robos.filter(r=>
 
         r.nome.toLowerCase().includes(texto) ||
 
@@ -162,6 +219,28 @@ pesquisa.addEventListener("input", () => {
 
     );
 
-    desenhar(filtrado);
+    renderizar(filtrados);
+
+});
+
+/* ==========================================
+SCROLL HEADER
+========================================== */
+
+window.addEventListener("scroll",()=>{
+
+    const header = document.querySelector("header");
+
+    if(window.scrollY>40){
+
+        header.style.boxShadow="0 10px 30px rgba(0,0,0,.35)";
+
+    }
+
+    else{
+
+        header.style.boxShadow="none";
+
+    }
 
 });
