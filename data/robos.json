@@ -7,11 +7,11 @@
     "tamanho": "680 KB",
     "categoria": "Bordo",
     "atualizacao": "26/01/2026",
-    "novo": true
+    "novo": false
   },
   {
     "nome": "Divergência de Cadastro de Bordo/SGPA",
-    "descricao": "Automatiza e exibi a lista de equipamentos que estão cadastrados como tipos diferentes no SGPA e no bordo, prejudicando relatórios.",
+    "descricao": "Automatiza e exibe a lista de equipamentos que estão cadastrados como tipos diferentes no SGPA e no bordo, que podem prejudicar informações dos relatórios.",
     "arquivo": "Divergência de Cadastro Bordo-SGPA.xlsm",
     "versao": "2.0",
     "tamanho": "870 KB",
@@ -20,32 +20,32 @@
     "novo": false
   },
   {
-    "nome": "Robô Logística",
-    "descricao": "Automação para controle logístico das operações.",
-    "arquivo": "Logistica.xlsm",
-    "versao": "1.5",
+    "nome": "Consulta Detalhada dos Comandos Online",
+    "descricao": "Exibe todos os detalhes sobre os comandos online, como quem o enviou, o tipo de comando e as datas de realização.",
+    "arquivo": "Consultar Comando Online.xlsm",
+    "versao": "1.0",
     "tamanho": "850 KB",
-    "categoria": "Logística",
+    "categoria": "Usuário",
     "atualizacao": "20/01/2026",
-    "novo": false
-  },
-  {
-    "nome": "Robô Torre de Manutenção",
-    "descricao": "Auxilia na gestão das atividades da torre de manutenção.",
-    "arquivo": "Torre.xlsm",
-    "versao": "3.0",
-    "tamanho": "650 KB",
-    "categoria": "PCM",
-    "atualizacao": "21/01/2026",
     "novo": true
   },
   {
-    "nome": "Robô Relatórios",
-    "descricao": "Geração automática de relatórios gerenciais.",
-    "arquivo": "Relatorios.xlsm",
-    "versao": "1.2",
+    "nome": "Consulta de Equipamentos em OFC OUTROS",
+    "descricao": "Consultar todos os equipamentos que estão cadastrados na frente 'OFC OUTROS' no Solinftec, afim de corrigir possíveis divergências antecipadamente.",
+    "arquivo": "Consulta de Equipamentos em OFC OUTROS.xlsm",
+    "versao": "1.0",
+    "tamanho": "650 KB",
+    "categoria": "Equipamento",
+    "atualizacao": "21/01/2026",
+    "novo": false
+  },
+  {
+    "nome": "Consulta de Conectividade",
+    "descricao": "Exibe o status de conectividade de todos os equipamentos ativos do Solinftec. Importante operação voltada para atualização de forma constante dos esquipamentos, garantindo informações acertivas nos relatórios.",
+    "arquivo": "Conectividade EDGE.xlsm",
+    "versao": "2.0",
     "tamanho": "540 KB",
-    "categoria": "Relatórios",
+    "categoria": "Relatório",
     "atualizacao": "22/01/2026",
     "novo": false
   }
