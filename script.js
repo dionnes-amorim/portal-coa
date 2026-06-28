@@ -68,25 +68,81 @@ function render(lista = robos){
 
         <div class="robot-card">
 
+            <!-- FAIXA DE CATEGORIA -->
             <div class="tag ${r.categoria.toLowerCase()}"></div>
 
-            <h3>${r.nome}</h3>
+            <!-- CABEÇALHO -->
+            <div class="robot-header">
 
-            <p>${r.descricao}</p>
+                <div class="robot-icon">
 
-            <div class="info">
+                    <i class="fa-solid ${iconeCategoria ? iconeCategoria(r.categoria) : "fa-robot"}"></i>
 
-                <span>v${r.versao}</span>
+                </div>
 
-                <span>${r.tamanho}</span>
+                <div class="robot-title">
+
+                    <h3>${r.nome}</h3>
+
+                    <span>${r.categoria}</span>
+
+                </div>
 
             </div>
 
+            <!-- DESCRIÇÃO -->
+            <p class="robot-description">
+
+                ${r.descricao}
+
+            </p>
+
+            <!-- BADGES -->
+            <div class="badges">
+
+                <span class="badge version">v${r.versao}</span>
+
+                <span class="badge xlsm">XLSM</span>
+
+                ${r.novo ? '<span class="badge novo">NOVO</span>' : ''}
+
+            </div>
+
+            <!-- INFO -->
+            <div class="robot-info">
+
+                <div class="info-box">
+
+                    <small>Tamanho</small>
+
+                    <strong>${r.tamanho}</strong>
+
+                </div>
+
+                <div class="info-box">
+
+                    <small>Categoria</small>
+
+                    <strong>${r.categoria}</strong>
+
+                </div>
+
+                <div class="info-box">
+
+                    <small>Atualização</small>
+
+                    <strong>${r.atualizacao}</strong>
+
+                </div>
+
+            </div>
+
+            <!-- BOTÃO -->
             <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
 
-                <button>
+                <button class="download-btn">
 
-                    ⬇ Baixar
+                    ⬇ Baixar Automação
 
                 </button>
 
