@@ -69,7 +69,7 @@ function render(lista = robos){
 
         html += `
 
-        <div class="robot-card ${r.categoria.toLowerCase()}" onclick="window.location.href='arquivos/${r.arquivo}'">
+        <div class="robot-card ${r.categoria.toLowerCase()}"${r.arquivo}'">
 
             <!-- BARRA LATERAL DE CATEGORIA -->
             <div class="tag"></div>
