@@ -64,16 +64,14 @@ function render(lista = robos){
 
     let html = "";
 
-    ordenado.forEach(r => {
+    ordenado.forEach((r, index) => {
 
         html += `
 
-        <div class="robot-card ${r.categoria.toLowerCase()}">
+        <div class="robot-card ${r.categoria.toLowerCase()} fade-in" style="animation-delay:${index * 40}ms">
 
-            <!-- BARRA CATEGORIA -->
             <div class="tag"></div>
 
-            <!-- HEADER -->
             <div class="robot-header">
 
                 <div class="robot-title">
@@ -86,25 +84,22 @@ function render(lista = robos){
 
             </div>
 
-            <!-- DESCRIÇÃO -->
             <p class="robot-description">
 
                 ${r.descricao}
 
             </p>
 
-            <!-- BADGES -->
             <div class="badges">
 
                 <span class="badge version">v${r.versao}</span>
 
                 <span class="badge xlsm">XLSM</span>
 
-                ${r.novo ? '<span class="badge novo">NOVO</span>' : ''}
+                ${r.novo ? '<span class="badge novo pulse">NOVO</span>' : ''}
 
             </div>
 
-            <!-- INFO -->
             <div class="robot-info">
 
                 <div class="info-box">
@@ -119,7 +114,6 @@ function render(lista = robos){
 
             </div>
 
-            <!-- BOTÃO DOWNLOAD -->
             <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
 
                 <button class="download-btn">
@@ -138,7 +132,49 @@ function render(lista = robos){
 
     listaRobos.innerHTML = html;
 
+    ativarHoverCards();
+
 }
+
+
+
+
+function ativarHoverCards(){
+
+    const cards = document.querySelectorAll(".robot-card");
+
+    cards.forEach(card => {
+
+        card.addEventListener("mouseenter", () => {
+
+            card.classList.add("hovered");
+
+        });
+
+        card.addEventListener("mouseleave", () => {
+
+            card.classList.remove("hovered");
+
+        });
+
+        card.addEventListener("click", () => {
+
+            cards.forEach(c => c.classList.remove("selected"));
+
+            card.classList.add("selected");
+
+        });
+
+    });
+
+}
+
+
+
+
+
+
+
 
 /* ================================
 PESQUISA
