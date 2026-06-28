@@ -58,7 +58,18 @@ function atualizarDashboard(){
 RENDER CARDS
 ================================ */
 
-function render(lista = robos){
+
+function highlight(text, query){
+
+    if(!query) return text;
+
+    return text.replace(new RegExp(query, "gi"), match =>
+        `<mark style="background:#f58220;color:#000;padding:2px 4px;border-radius:4px">${match}</mark>`
+    );
+
+}
+
+function render(lista = robos, query = ""){
 
     const ordenado = [...lista].sort((a, b) => (b.novo === true) - (a.novo === true));
 
@@ -68,7 +79,7 @@ function render(lista = robos){
 
         html += `
 
-        <div class="robot-card ${r.categoria.toLowerCase()} fade-in" style="animation-delay:${index * 40}ms">
+        <div class="robot-card ${r.categoria.toLowerCase()} fade-in">
 
             <div class="tag"></div>
 
@@ -76,7 +87,7 @@ function render(lista = robos){
 
                 <div class="robot-title">
 
-                    <h3>${r.nome}</h3>
+                    <h3>${highlight(r.nome, query)}</h3>
 
                     <span>${r.categoria}</span>
 
@@ -86,7 +97,7 @@ function render(lista = robos){
 
             <p class="robot-description">
 
-                ${r.descricao}
+                ${highlight(r.descricao, query)}
 
             </p>
 
@@ -132,9 +143,11 @@ function render(lista = robos){
 
     listaRobos.innerHTML = html;
 
-    ativarHoverCards();
-
 }
+
+
+
+
 
 
 
