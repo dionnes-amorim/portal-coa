@@ -60,21 +60,22 @@ RENDER CARDS
 
 function render(lista = robos){
 
+    // 🔥 Ordena: NOVOS primeiro
+    const ordenado = [...lista].sort((a, b) => (b.novo === true) - (a.novo === true));
+
     let html = "";
 
-    lista.forEach(r => {
+    ordenado.forEach(r => {
 
         html += `
 
-        <div class="robot-card">
+        <div class="robot-card ${r.categoria.toLowerCase()}" onclick="window.location.href='arquivos/${r.arquivo}'">
 
-            <!-- FAIXA DE CATEGORIA -->
-            <div class="tag ${r.categoria.toLowerCase()}"></div>
+            <!-- BARRA LATERAL DE CATEGORIA -->
+            <div class="tag"></div>
 
             <!-- CABEÇALHO -->
             <div class="robot-header">
-
-                </div>
 
                 <div class="robot-title">
 
@@ -108,41 +109,23 @@ function render(lista = robos){
             <div class="robot-info">
 
                 <div class="info-box">
-
                     <small>Tamanho</small>
-
                     <strong>${r.tamanho}</strong>
-
                 </div>
 
                 <div class="info-box">
-
-                    <small>Categoria</small>
-
-                    <strong>${r.categoria}</strong>
-
-                </div>
-
-                <div class="info-box">
-
                     <small>Atualização</small>
-
                     <strong>${r.atualizacao}</strong>
-
                 </div>
 
             </div>
 
-            <!-- BOTÃO -->
-            <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
+            <!-- BOTÃO (VISUAL SOMENTE) -->
+            <button class="download-btn">
 
-                <button class="download-btn">
+                ⬇ Baixar Automação
 
-                    ⬇ Baixar Automação
-
-                </button>
-
-            </a>
+            </button>
 
         </div>
 
@@ -151,7 +134,7 @@ function render(lista = robos){
     });
 
     listaRobos.innerHTML = html;
-
+    
 }
 
 /* ================================
