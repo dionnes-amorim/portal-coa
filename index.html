@@ -1,217 +1,222 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Portal de Automações COA</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="img/logo-tereos.png">
+<title>COA Hub | Central de Automações</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="icon" href="img/logo-tereos.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-    <!-- ================= LOADER ================= -->
+<!-- LOADER -->
 
-    <div id="loader">
+<div id="loader">
 
-        <div class="loader-box">
+<div class="loader-box">
 
-            <div class="loader-logo">
+<img src="img/logo-tereos.png">
 
-                <img src="img/logo-tereos.png" alt="Tereos">
+<h2>COA Hub</h2>
 
-            </div>
+<p>Carregando Plataforma...</p>
 
-            <h2>Portal de Automações COA</h2>
+<div class="spinner"></div>
 
-            <p>Carregando plataforma...</p>
+</div>
 
-            <div class="spinner"></div>
+</div>
 
-        </div>
+<div id="app">
 
-    </div>
+<header>
 
-    <!-- ================= APP ================= -->
+<div class="header-left">
 
-    <div id="app">
+<img src="img/logo-tereos.png" class="logo">
 
-        <!-- HEADER -->
+<div>
 
-        <header>
+<h1>COA Hub</h1>
 
-            <div class="header-container">
+<p>Central de Automações • Centro de Operações Agroindustriais</p>
 
-                <div class="logo-area">
+</div>
 
-                    <img src="img/logo-tereos.png" class="logo">
+</div>
 
-                </div>
+<div class="header-version">
 
-                <div class="header-text">
+<span>Portal Corporativo</span>
 
-                    <h1>Portal de Automações COA</h1>
+<strong>v1.0</strong>
 
-                    <p>Centro de Operações Agroindustriais • Tereos Brasil</p>
+</div>
 
-                </div>
+</header>
 
-            </div>
+<section class="hero">
 
-        </header>
+<div class="hero-content">
 
-        <!-- HERO -->
+<h2>
 
-        <section class="hero">
+Central Oficial de Automações
 
-            <div class="hero-overlay"></div>
+</h2>
 
-            <div class="hero-content">
+<p>
 
-                <h2>Central Oficial de Automações</h2>
+Ambiente desenvolvido para centralizar todas as automações utilizadas pelo Centro de Operações Agroindustriais da Tereos Brasil.
 
-                <p>
+</p>
 
-                    Plataforma desenvolvida para centralizar, organizar e disponibilizar
-                    todas as automações utilizadas pelo Centro de Operações Agroindustriais.
+</div>
 
-                </p>
+<div class="coa-bg">
 
-            </div>
+COA
 
-            <div class="coa-watermark">
+</div>
 
-                COA
+</section>
 
-            </div>
+<section class="dashboard">
 
-        </section>
+<div class="dash-card">
 
-        <!-- PESQUISA -->
+<i class="fa-solid fa-robot"></i>
 
-        <section class="search-section">
+<h2 id="totalRobos">0</h2>
 
-            <div class="search-box">
+<span>Automações Disponíveis</span>
 
-                <i class="fa-solid fa-magnifying-glass"></i>
+</div>
 
-                <input
-                    type="text"
-                    id="pesquisa"
-                    placeholder="Pesquisar automações..." />
+<div class="dash-card">
 
-            </div>
+<i class="fa-solid fa-star"></i>
 
-        </section>
+<h2 id="novidades">0</h2>
 
-        <!-- DASHBOARD -->
+<span>Novidades</span>
 
-        <section class="dashboard">
+</div>
 
-            <div class="info-card">
+<div class="dash-card">
 
-                <i class="fa-solid fa-robot"></i>
+<i class="fa-solid fa-layer-group"></i>
 
-                <span id="totalRobos">0</span>
+<h2 id="categorias">0</h2>
 
-                <small>Automações</small>
+<span>Categorias</span>
 
-            </div>
+</div>
 
-            <div class="info-card">
+</section>
 
-                <i class="fa-solid fa-file-excel"></i>
+<section class="search-area">
 
-                <span id="totalArquivos">5</span>
+<div class="search-box">
 
-                <small>Arquivos</small>
+<i class="fa-solid fa-magnifying-glass"></i>
 
-            </div>
+<input
 
-            <div class="info-card">
+id="pesquisa"
 
-                <i class="fa-solid fa-calendar-days"></i>
+placeholder="Pesquisar automações...">
 
-                <span id="dataAtual"></span>
+</div>
 
-                <small>Atualizado</small>
+<div id="filtros">
 
-            </div>
+<button class="ativo" data-cat="Todos">
 
-            <div class="info-card online">
+Todos
 
-                <i class="fa-solid fa-circle-check"></i>
+</button>
 
-                <span>ONLINE</span>
+</div>
 
-                <small>Sistema</small>
+</section>
 
-            </div>
+<section class="ultima">
 
-        </section>
+<h3>
 
-        <!-- TÍTULO -->
+<i class="fa-solid fa-bolt"></i>
 
-        <section class="titulo">
+Última Automação Adicionada
 
-            <h2>
+</h3>
 
-                <i class="fa-solid fa-microchip"></i>
+<div id="ultimaAutomacao">
 
-                Biblioteca de Automações
+Carregando...
 
-            </h2>
+</div>
 
-        </section>
+</section>
 
-        <!-- CARDS -->
+<section>
 
-        <main id="listaRobos">
+<h2 class="titulo">
 
-        </main>
+Central de Automações
 
-        <!-- FOOTER -->
+</h2>
 
-        <footer>
+<div id="listaRobos">
 
-            <p>
+</div>
 
-                Portal de Automações COA
+</section>
 
-            </p>
+<footer>
 
-            <span>
+<div>
 
-                Centro de Operações Agroindustriais • Tereos Brasil
+COA Hub
 
-            </span>
+</div>
 
-            <small>
+<p>
 
-                Versão 1.0.0
+Centro de Operações Agroindustriais
 
-            </small>
+</p>
 
-        </footer>
+<small>
 
-    </div>
+Tereos Brasil © 2026
 
-    <script src="script.js"></script>
+</small>
+
+</footer>
+
+</div>
+
+<div id="toast">
+
+✔ Download iniciado
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 
