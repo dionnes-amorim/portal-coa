@@ -60,7 +60,6 @@ RENDER CARDS
 
 function render(lista = robos){
 
-    // 🔥 Ordena: NOVOS primeiro
     const ordenado = [...lista].sort((a, b) => (b.novo === true) - (a.novo === true));
 
     let html = "";
@@ -69,12 +68,12 @@ function render(lista = robos){
 
         html += `
 
-        <div class="robot-card ${r.categoria.toLowerCase()}"${r.arquivo}'">
+        <div class="robot-card ${r.categoria.toLowerCase()}">
 
-            <!-- BARRA LATERAL DE CATEGORIA -->
+            <!-- BARRA CATEGORIA -->
             <div class="tag"></div>
 
-            <!-- CABEÇALHO -->
+            <!-- HEADER -->
             <div class="robot-header">
 
                 <div class="robot-title">
@@ -120,12 +119,16 @@ function render(lista = robos){
 
             </div>
 
-            <!-- BOTÃO (VISUAL SOMENTE) -->
-            <button class="download-btn">
+            <!-- BOTÃO DOWNLOAD -->
+            <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
 
-                ⬇ Baixar Automação
+                <button class="download-btn">
 
-            </button>
+                    ⬇ Baixar Automação
+
+                </button>
+
+            </a>
 
         </div>
 
@@ -134,7 +137,7 @@ function render(lista = robos){
     });
 
     listaRobos.innerHTML = html;
-    
+
 }
 
 /* ================================
