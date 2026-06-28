@@ -2398,3 +2398,83 @@ FILTROS SUAVES (se usar depois)
     pointer-events:none;
 
 }
+
+/* =========================
+THEME SYSTEM
+========================= */
+
+:root{
+
+    --bg:#0f1115;
+
+    --card:#171a21;
+
+    --text:#ffffff;
+
+    --muted:#b8c0cc;
+
+    --accent:#f58220;
+
+}
+
+body.light{
+
+    --bg:#f4f6f9;
+
+    --card:#ffffff;
+
+    --text:#1c1f26;
+
+    --muted:#4b5563;
+
+    --accent:#f58220;
+
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    transition:.3s;
+
+}
+
+/* CARDS */
+
+.robot-card{
+
+    background:var(--card);
+
+    color:var(--text);
+
+}
+
+/* HEADER BUTTON */
+
+.theme-toggle{
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    background:var(--card);
+
+    padding:10px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.theme-toggle:hover{
+
+    transform:scale(1.1);
+
+}
