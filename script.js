@@ -1,246 +1,177 @@
-/* ==========================================
-   PORTAL DE AUTOMAÇÕES COA
-   TEREOS BRASIL
-========================================== */
-
 const lista = document.getElementById("listaRobos");
 const pesquisa = document.getElementById("pesquisa");
 
 const totalRobos = document.getElementById("totalRobos");
-const totalArquivos = document.getElementById("totalArquivos");
-const dataAtual = document.getElementById("dataAtual");
+const novidades = document.getElementById("novidades");
+const categorias = document.getElementById("categorias");
 
-const loader = document.getElementById("loader");
-const app = document.getElementById("app");
+const ultimaAutomacao = document.getElementById("ultimaAutomacao");
+const filtros = document.getElementById("filtros");
+const toast = document.getElementById("toast");
 
 let robos = [];
 
-/* ==========================================
-DATA
-========================================== */
+/* ================================
+CARREGAMENTO
+================================ */
 
-function atualizarData(){
+fetch("data/robos.json")
+.then(res => res.json())
+.then(data => {
 
-    const hoje = new Date();
+    robos = data;
 
-    dataAtual.textContent = hoje.toLocaleDateString("pt-BR");
+    render();
+
+    atualizarDashboard();
+
+    criarFiltros();
+
+    carregarUltima();
+
+    setTimeout(()=>{
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("app").style.display = "block";
+    },800);
+
+});
+
+/* ================================
+DASHBOARD
+================================ */
+
+function atualizarDashboard(){
+
+    totalRobos.innerText = robos.length;
+
+    const novos = robos.filter(r => r.novo).length;
+
+    novidades.innerText = novos;
+
+    const cats = [...new Set(robos.map(r => r.categoria))].length;
+
+    categorias.innerText = cats;
 
 }
 
-/* ==========================================
-ÍCONE POR CATEGORIA
-========================================== */
+/* ================================
+RENDER CARDS
+================================ */
 
-function iconeCategoria(categoria){
+function render(lista = robos){
 
-    switch(categoria.toLowerCase()){
+    let html = "";
 
-        case "pcm":
-            return "fa-screwdriver-wrench";
+    lista.forEach(r => {
 
-        case "industrial":
-            return "fa-industry";
+        html += `
 
-        case "indicadores":
-            return "fa-chart-column";
+        <div class="robot-card">
 
-        case "logística":
-        case "logistica":
-            return "fa-truck";
+            <div class="tag ${r.categoria.toLowerCase()}"></div>
 
-        case "relatórios":
-        case "relatorios":
-            return "fa-file-lines";
+            <h3>${r.nome}</h3>
 
-        default:
-            return "fa-robot";
+            <p>${r.descricao}</p>
 
-    }
+            <div class="info">
+
+                <span>v${r.versao}</span>
+
+                <span>${r.tamanho}</span>
+
+            </div>
+
+            <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
+
+                <button>
+
+                    ⬇ Baixar
+
+                </button>
+
+            </a>
+
+        </div>
+
+        `;
+
+    });
+
+    listaRobos.innerHTML = html;
 
 }
 
-/* ==========================================
-RENDERIZAÇÃO
-========================================== */
+/* ================================
+PESQUISA
+================================ */
 
-function renderizar(listaAtual){
+pesquisa.addEventListener("input", e => {
 
-    lista.innerHTML = "";
+    const valor = e.target.value.toLowerCase();
 
-    listaAtual.forEach(r=>{
+    const filtrado = robos.filter(r =>
+        r.nome.toLowerCase().includes(valor) ||
+        r.descricao.toLowerCase().includes(valor) ||
+        r.categoria.toLowerCase().includes(valor)
+    );
 
-        lista.innerHTML += `
+    render(filtrado);
 
-<div class="robot-card">
+});
 
-    <div class="robot-header">
+/* ================================
+FILTROS
+================================ */
 
-        <div class="robot-icon">
+function criarFiltros(){
 
-            <i class="fa-solid ${iconeCategoria(r.categoria)}"></i>
+    const cats = ["Todos", ...new Set(robos.map(r => r.categoria))];
 
-        </div>
+    cats.forEach(c => {
 
-        <div class="robot-title">
+        const btn = document.createElement("button");
 
-            <h2>${r.nome}</h2>
+        btn.innerText = c;
 
-            <span>${r.categoria}</span>
+        btn.onclick = () => {
 
-        </div>
+            if(c === "Todos") render();
 
-    </div>
+            else render(robos.filter(r => r.categoria === c));
 
-    <p class="robot-description">
+        };
 
-        ${r.descricao}
-
-    </p>
-
-    <div class="badges">
-
-        <span class="badge version">
-
-            v${r.versao}
-
-        </span>
-
-        <span class="badge xlsm">
-
-            XLSM
-
-        </span>
-
-        ${r.novo ? '<span class="badge novo">NOVO</span>' : ''}
-
-    </div>
-
-    <div class="robot-info">
-
-        <div class="info-box">
-
-            <small>Tamanho</small>
-
-            <strong>${r.tamanho}</strong>
-
-        </div>
-
-        <div class="info-box">
-
-            <small>Atualização</small>
-
-            <strong>${r.atualizacao}</strong>
-
-        </div>
-
-    </div>
-
-    <a href="arquivos/${r.arquivo}" download>
-
-        <button class="download-btn">
-
-            <i class="fa-solid fa-download"></i>
-
-            Baixar Automação
-
-        </button>
-
-    </a>
-
-</div>
-
-`;
+        filtros.appendChild(btn);
 
     });
 
 }
 
-/* ==========================================
-CARREGA JSON
-========================================== */
+/* ================================
+ULTIMA AUTOMACAO
+================================ */
 
-fetch("data/robos.json")
+function carregarUltima(){
 
-.then(res=>res.json())
+    const ultima = robos[robos.length - 1];
 
-.then(dados=>{
-
-    robos = dados;
-
-    atualizarData();
-
-    totalRobos.textContent = robos.length;
-
-    totalArquivos.textContent = robos.length;
-
-    renderizar(robos);
-
-    setTimeout(()=>{
-
-        loader.style.display="none";
-
-        app.style.display="block";
-
-    },700);
-
-})
-
-.catch(()=>{
-
-    loader.innerHTML=`
-
-        <div style="text-align:center">
-
-            <h2>Erro ao carregar as automações.</h2>
-
-            <p>Verifique o arquivo robos.json</p>
-
-        </div>
-
+    ultimaAutomacao.innerHTML = `
+        <strong>${ultima.nome}</strong><br>
+        <small>${ultima.versao}</small>
     `;
+}
 
-});
+/* ================================
+TOAST DOWNLOAD
+================================ */
 
-/* ==========================================
-PESQUISA
-========================================== */
+function downloadToast(){
 
-pesquisa.addEventListener("keyup",()=>{
+    toast.classList.add("show");
 
-    const texto = pesquisa.value.toLowerCase();
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
 
-    const filtrados = robos.filter(r=>
-
-        r.nome.toLowerCase().includes(texto) ||
-
-        r.descricao.toLowerCase().includes(texto) ||
-
-        r.categoria.toLowerCase().includes(texto)
-
-    );
-
-    renderizar(filtrados);
-
-});
-
-/* ==========================================
-SCROLL HEADER
-========================================== */
-
-window.addEventListener("scroll",()=>{
-
-    const header = document.querySelector("header");
-
-    if(window.scrollY>40){
-
-        header.style.boxShadow="0 10px 30px rgba(0,0,0,.35)";
-
-    }
-
-    else{
-
-        header.style.boxShadow="none";
-
-    }
-
-});
+}
