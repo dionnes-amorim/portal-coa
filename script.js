@@ -190,7 +190,7 @@ pesquisa.addEventListener("input", e => {
         r.categoria.toLowerCase().includes(valor)
     );
 
-    render(filtrado);
+    render(filtrado, valor);
 
 });
 
