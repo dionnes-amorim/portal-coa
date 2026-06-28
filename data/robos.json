@@ -4,9 +4,9 @@
     "descricao": "Automatiza a identificação dos firmwares mais antigos dos bordos dos equipamentos, que podem prejudicar informações do relatório no SGPA.",
     "arquivo": "Identificar Firmwares Desatualizados.xlsm",
     "versao": "3.0",
-    "tamanho": "680 KB",
+    "tamanho": "664 KB",
     "categoria": "Bordo",
-    "atualizacao": "26/01/2026",
+    "atualizacao": "26/06/2025",
     "novo": false
   },
   {
@@ -14,9 +14,9 @@
     "descricao": "Automatiza e exibe a lista de equipamentos que estão cadastrados como tipos diferentes no SGPA e no bordo, que podem prejudicar informações dos relatórios.",
     "arquivo": "Divergência de Cadastro Bordo-SGPA.xlsm",
     "versao": "2.0",
-    "tamanho": "870 KB",
+    "tamanho": "855 KB",
     "categoria": "Bordo",
-    "atualizacao": "18/01/2026",
+    "atualizacao": "20/01/2026",
     "novo": false
   },
   {
@@ -24,9 +24,9 @@
     "descricao": "Exibe todos os detalhes sobre os comandos online, como quem o enviou, o tipo de comando e as datas de realização.",
     "arquivo": "Consultar Comando Online.xlsm",
     "versao": "1.0",
-    "tamanho": "850 KB",
+    "tamanho": "2,72 MB",
     "categoria": "Usuário",
-    "atualizacao": "20/01/2026",
+    "atualizacao": "12/02/2025",
     "novo": true
   },
   {
@@ -34,9 +34,9 @@
     "descricao": "Consultar todos os equipamentos que estão cadastrados na frente 'OFC OUTROS' no Solinftec, afim de corrigir possíveis divergências antecipadamente.",
     "arquivo": "Consulta de Equipamentos em OFC OUTROS.xlsm",
     "versao": "1.0",
-    "tamanho": "650 KB",
+    "tamanho": "2,48 MB",
     "categoria": "Equipamento",
-    "atualizacao": "21/01/2026",
+    "atualizacao": "03/11/2025",
     "novo": false
   },
   {
@@ -44,9 +44,9 @@
     "descricao": "Exibe o status de conectividade de todos os equipamentos ativos do Solinftec. Importante operação voltada para atualização de forma constante dos esquipamentos, garantindo informações acertivas nos relatórios.",
     "arquivo": "Conectividade EDGE.xlsm",
     "versao": "2.0",
-    "tamanho": "540 KB",
+    "tamanho": "2,74 MB",
     "categoria": "Relatório",
-    "atualizacao": "22/01/2026",
+    "atualizacao": "06/02/2025",
     "novo": false
   }
 ]
