@@ -1,10 +1,10 @@
 [
   {
     "nome": "Identificar Firmwares Desatualizados",
-    "descricao": "Automatiza o processo de programação das Ordens de Serviço do COA.",
+    "descricao": "Automatiza a identificação dos firmwares mais antigos dos bordos dos equipamentos, que podem prejudicar informações do relatório no SGPA.",
     "arquivo": "Identificar Firmwares Desatualizados.xlsm",
-    "versao": "1.0",
-    "tamanho": "420 KB",
+    "versao": "3.0",
+    "tamanho": "680 KB",
     "categoria": "Manutenção",
     "atualizacao": "26/01/2026",
     "novo": true
