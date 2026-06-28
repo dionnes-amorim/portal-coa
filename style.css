@@ -357,7 +357,7 @@ header.shadow{
 
     position:absolute;
 
-    right:20px;
+    right:-50px;
 
     top:50%;
 
@@ -377,7 +377,7 @@ header.shadow{
 
     max-width:100%;
 
-    filter:grayscale(100%) brightness(2);
+    filter:grayscale(0%) brightness(2);
 
 }
 
