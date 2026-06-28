@@ -142,7 +142,7 @@ function render(lista = robos, query = ""){
     });
 
     listaRobos.innerHTML = html;
-
+    ativarFocusCards();
 }
 
 
