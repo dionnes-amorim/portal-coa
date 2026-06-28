@@ -9,305 +9,364 @@ const ultimaAutomacao = document.getElementById("ultimaAutomacao");
 const filtros = document.getElementById("filtros");
 const toast = document.getElementById("toast");
 
+const loader = document.getElementById("loader");
+const app = document.getElementById("app");
+
 let robos = [];
+let categoriaAtual = "Todos";
 
-/* ================================
-CARREGAMENTO
-================================ */
+/* ============================
+   CARREGAMENTO
+============================ */
 
-fetch("data/robos.json")
-.then(res => res.json())
-.then(data => {
+async function iniciar() {
 
-    robos = data;
+    try {
 
-    render();
+        const resposta = await fetch("data/robos.json");
 
-    atualizarDashboard();
+        robos = await resposta.json();
 
-    criarFiltros();
+        atualizarDashboard();
 
-    carregarUltima();
+        criarFiltros();
 
-    setTimeout(()=>{
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("app").style.display = "block";
-    },800);
+        carregarUltima();
 
-});
+        render();
 
-/* ================================
-DASHBOARD
-================================ */
+        carregarTema();
 
-function atualizarDashboard(){
+        setTimeout(() => {
 
-    totalRobos.innerText = robos.length;
+            loader.style.display = "none";
+            app.style.display = "block";
 
-    const novos = robos.filter(r => r.novo).length;
+        }, 700);
 
-    novidades.innerText = novos;
+    } catch (erro) {
 
-    const cats = [...new Set(robos.map(r => r.categoria))].length;
-
-    categorias.innerText = cats;
-
-}
-
-/* ================================
-RENDER CARDS
-================================ */
-
-
-function highlight(text, query){
-
-    if(!query) return text;
-
-    return text.replace(new RegExp(query, "gi"), match =>
-        `<mark style="background:#f58220;color:#000;padding:2px 4px;border-radius:4px">${match}</mark>`
-    );
-
-}
-
-function render(lista = robos, query = ""){
-
-    const ordenado = [...lista].sort((a, b) => (b.novo === true) - (a.novo === true));
-
-    let html = "";
-
-    ordenado.forEach((r, index) => {
-
-        html += `
-
-        <div class="robot-card ${r.categoria.toLowerCase()} fade-in">
-
-            <div class="tag"></div>
-
-            <div class="robot-header">
-
-                <div class="robot-title">
-
-                    <h3>${highlight(r.nome, query)}</h3>
-
-                    <span>${r.categoria}</span>
-
-                </div>
-
+        loader.innerHTML = `
+            <div style="text-align:center;color:white;">
+                <h2>Erro ao carregar o portal</h2>
+                <p>Verifique o arquivo robos.json</p>
             </div>
-
-            <p class="robot-description">
-
-                ${highlight(r.descricao, query)}
-
-            </p>
-
-            <div class="badges">
-
-                <span class="badge version">v${r.versao}</span>
-
-                <span class="badge xlsm">XLSM</span>
-
-                ${r.novo ? '<span class="badge novo pulse">NOVO</span>' : ''}
-
-            </div>
-
-            <div class="robot-info">
-
-                <div class="info-box">
-                    <small>Tamanho</small>
-                    <strong>${r.tamanho}</strong>
-                </div>
-
-                <div class="info-box">
-                    <small>Atualização</small>
-                    <strong>${r.atualizacao}</strong>
-                </div>
-
-            </div>
-
-            <a href="arquivos/${r.arquivo}" download onclick="downloadToast()">
-
-                <button class="download-btn">
-
-                    ⬇ Baixar Automação
-
-                </button>
-
-            </a>
-
-        </div>
-
         `;
 
-    });
-
-    listaRobos.innerHTML = html;
-    ativarFocusCards();
-}
-
-
-
-
-
-
-
-
-function ativarHoverCards(){
-
-    const cards = document.querySelectorAll(".robot-card");
-
-    cards.forEach(card => {
-
-        card.addEventListener("mouseenter", () => {
-
-            card.classList.add("hovered");
-
-        });
-
-        card.addEventListener("mouseleave", () => {
-
-            card.classList.remove("hovered");
-
-        });
-
-        card.addEventListener("click", () => {
-
-            cards.forEach(c => c.classList.remove("selected"));
-
-            card.classList.add("selected");
-
-        });
-
-    });
+    }
 
 }
 
+iniciar();
 
+/* ============================
+   DASHBOARD
+============================ */
 
+function atualizarDashboard() {
 
+    totalRobos.textContent = robos.length;
 
+    novidades.textContent = robos.filter(r => r.novo).length;
 
+    categorias.textContent = [...new Set(robos.map(r => r.categoria))].length;
 
+}
 
-/* ================================
-PESQUISA
-================================ */
+/* ============================
+   HIGHLIGHT
+============================ */
 
-pesquisa.addEventListener("input", e => {
+function highlight(texto, busca) {
 
-    const valor = e.target.value.toLowerCase();
+    if (!busca) return texto;
 
-    const filtrado = robos.filter(r =>
-        r.nome.toLowerCase().includes(valor) ||
-        r.descricao.toLowerCase().includes(valor) ||
-        r.categoria.toLowerCase().includes(valor)
+    return texto.replace(
+
+        new RegExp(busca, "gi"),
+
+        m => `<mark>${m}</mark>`
+
     );
 
-    render(filtrado, valor);
+}
 
-});
+/* ============================
+   RENDER
+============================ */
 
-/* ================================
-FILTROS
-================================ */
+function render() {
 
-function criarFiltros(){
+    const texto = pesquisa.value.toLowerCase();
 
-    const cats = ["Todos", ...new Set(robos.map(r => r.categoria))];
+    let dados = [...robos];
 
-    cats.forEach(c => {
+    if (categoriaAtual !== "Todos") {
 
-        const btn = document.createElement("button");
+        dados = dados.filter(r => r.categoria === categoriaAtual);
 
-        btn.innerText = c;
+    }
 
-        btn.onclick = () => {
+    if (texto) {
 
-            if(c === "Todos") render();
+        dados = dados.filter(r =>
 
-            else render(robos.filter(r => r.categoria === c));
+            r.nome.toLowerCase().includes(texto) ||
 
-        };
+            r.descricao.toLowerCase().includes(texto) ||
 
-        filtros.appendChild(btn);
+            r.categoria.toLowerCase().includes(texto)
+
+        );
+
+    }
+
+    dados.sort((a, b) => b.novo - a.novo);
+
+    lista.innerHTML = dados.map(r => `
+
+<div class="robot-card ${r.categoria.toLowerCase()}">
+
+<div class="tag"></div>
+
+<div class="robot-header">
+
+<div class="robot-title">
+
+<h3>${highlight(r.nome, texto)}</h3>
+
+<span>${r.categoria}</span>
+
+</div>
+
+</div>
+
+<p class="robot-description">
+
+${highlight(r.descricao, texto)}
+
+</p>
+
+<div class="badges">
+
+<span class="badge version">
+
+v${r.versao}
+
+</span>
+
+<span class="badge xlsm">
+
+XLSM
+
+</span>
+
+${r.novo ? '<span class="badge novo pulse">NOVO</span>' : ''}
+
+</div>
+
+<div class="robot-info">
+
+<div class="info-box">
+
+<small>Tamanho</small>
+
+<strong>${r.tamanho}</strong>
+
+</div>
+
+<div class="info-box">
+
+<small>Atualização</small>
+
+<strong>${r.atualizacao}</strong>
+
+</div>
+
+</div>
+
+<a href="arquivos/${r.arquivo}"
+
+download
+
+onclick="downloadToast()">
+
+<button class="download-btn">
+
+<i class="fa-solid fa-download"></i>
+
+Baixar Automação
+
+</button>
+
+</a>
+
+</div>
+
+`).join("");
+
+    ativarCards();
+
+}
+/* ============================
+   PESQUISA
+============================ */
+
+pesquisa.addEventListener("input", render);
+
+/* ============================
+   FILTROS
+============================ */
+
+function criarFiltros() {
+
+    filtros.innerHTML = "";
+
+    const listaCategorias = [
+
+        "Todos",
+
+        ...new Set(robos.map(r => r.categoria))
+
+    ];
+
+    listaCategorias.forEach(cat => {
+
+        const botao = document.createElement("button");
+
+        botao.textContent = cat;
+
+        if (cat === categoriaAtual) {
+
+            botao.classList.add("ativo");
+
+        }
+
+        botao.addEventListener("click", () => {
+
+            categoriaAtual = cat;
+
+            document
+                .querySelectorAll("#filtros button")
+                .forEach(btn => btn.classList.remove("ativo"));
+
+            botao.classList.add("ativo");
+
+            render();
+
+        });
+
+        filtros.appendChild(botao);
 
     });
 
 }
 
-/* ================================
-ULTIMA AUTOMACAO
-================================ */
+/* ============================
+   ÚLTIMA AUTOMAÇÃO
+============================ */
 
-function carregarUltima(){
+function carregarUltima() {
+
+    if (!robos.length) return;
 
     const ultima = robos[robos.length - 1];
 
     ultimaAutomacao.innerHTML = `
-        <strong>${ultima.nome}</strong><br>
-        <small>${ultima.versao}</small>
+
+        <strong>${ultima.nome}</strong>
+
+        <br>
+
+        <small>
+
+            Versão ${ultima.versao}
+
+            •
+
+            ${ultima.atualizacao}
+
+        </small>
+
     `;
+
 }
 
-/* ================================
-TOAST DOWNLOAD
-================================ */
+/* ============================
+   TOAST
+============================ */
 
-function downloadToast(){
+let toastTimer;
+
+function downloadToast() {
+
+    clearTimeout(toastTimer);
 
     toast.classList.add("show");
 
-    setTimeout(() => {
+    toastTimer = setTimeout(() => {
+
         toast.classList.remove("show");
+
     }, 2000);
 
 }
-function toggleTheme(){
+
+/* ============================
+   TEMA
+============================ */
+
+function toggleTheme() {
 
     document.body.classList.toggle("light");
 
-    const isLight = document.body.classList.contains("light");
+    const tema = document.body.classList.contains("light")
+        ? "light"
+        : "dark";
 
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+    localStorage.setItem("theme", tema);
+
+    atualizarIconeTema();
 
 }
 
-/* carregar tema salvo */
+function carregarTema() {
 
-(function(){
+    const tema = localStorage.getItem("theme");
 
-    const theme = localStorage.getItem("theme");
-
-    if(theme === "light"){
+    if (tema === "light") {
 
         document.body.classList.add("light");
 
     }
 
-})();
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-    const isLight = document.body.classList.contains("light");
-
-    localStorage.setItem("theme", isLight ? "light" : "dark");
+    atualizarIconeTema();
 
 }
 
-/* carregar tema salvo */
-(function(){
+function atualizarIconeTema() {
 
-    const theme = localStorage.getItem("theme");
+    const icone = document.querySelector(".theme-toggle i");
 
-    if(theme === "light"){
+    if (!icone) return;
 
-        document.body.classList.add("light");
+    if (document.body.classList.contains("light")) {
+
+        icone.className = "fa-solid fa-sun";
+
+    } else {
+
+        icone.className = "fa-solid fa-moon";
 
     }
 
-})();
-function ativarFocusCards(){
+}
+
+/* ============================
+   CARDS
+============================ */
+
+function ativarCards() {
 
     const cards = document.querySelectorAll(".robot-card");
 
@@ -315,13 +374,10 @@ function ativarFocusCards(){
 
         card.addEventListener("click", () => {
 
-            // remove de todos
             cards.forEach(c => c.classList.remove("active"));
 
-            // ativa no clicado
             card.classList.add("active");
 
-            // ativa blur no fundo
             document.body.classList.add("card-open");
 
         });
@@ -330,15 +386,37 @@ function ativarFocusCards(){
 
 }
 
-/* fechar ao clicar fora */
-document.addEventListener("click", (e) => {
+document.addEventListener("click", e => {
 
-    if(!e.target.closest(".robot-card")){
+    if (!e.target.closest(".robot-card")) {
 
-        document.querySelectorAll(".robot-card")
-        .forEach(c => c.classList.remove("active"));
+        document
+            .querySelectorAll(".robot-card")
+            .forEach(card => card.classList.remove("active"));
 
         document.body.classList.remove("card-open");
+
+    }
+
+});
+
+/* ============================
+   HEADER
+============================ */
+
+window.addEventListener("scroll", () => {
+
+    const header = document.querySelector("header");
+
+    if (!header) return;
+
+    if (window.scrollY > 30) {
+
+        header.classList.add("shadow");
+
+    } else {
+
+        header.classList.remove("shadow");
 
     }
 
