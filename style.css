@@ -2478,3 +2478,97 @@ body{
     transform:scale(1.1);
 
 }
+
+.theme-toggle{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    transition:.3s;
+
+}
+
+.theme-toggle i{
+
+    color:var(--text);
+
+}
+
+.theme-toggle:hover{
+
+    transform:scale(1.1);
+
+    background:var(--accent);
+
+    color:#000;
+
+}
+   
+/* FUNDO EMBASSADO */
+
+body.card-open::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    backdrop-filter:blur(6px);
+
+    z-index:50;
+
+}
+
+/* CARD EM FOCO */
+
+.robot-card{
+
+    transition:.3s;
+
+    position:relative;
+
+    z-index:1;
+
+}
+
+.robot-card.active{
+
+    transform:scale(1.08) translateY(-10px);
+
+    z-index:100;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+
+}
