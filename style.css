@@ -1,10 +1,6 @@
 /* ===========================================
-   PORTAL DE AUTOMAÇÕES COA
-   TEREOS BRASIL
-   STYLE.CSS - PARTE 1/5
+   STYLE.CSS - PARTE 1/4 (LIMPO E CORRIGIDO)
 =========================================== */
-
-/* RESET */
 
 *{
     margin:0;
@@ -31,11 +27,9 @@
     --shadow:0 15px 35px rgba(0,0,0,.30);
     --radius:20px;
     --transition:.30s;
-
 }
 
 /* TEMA CLARO */
-
 body.light{
 
     --bg:#f3f5f8;
@@ -46,13 +40,10 @@ body.light{
     --white:#202020;
     --text:#444;
     --gray:#666;
-
 }
 
 html{
-
     scroll-behavior:smooth;
-
 }
 
 body{
@@ -66,11 +57,9 @@ body{
     min-height:100vh;
 
     overflow-x:hidden;
-
 }
 
 /* LOADER */
-
 #loader{
 
     position:fixed;
@@ -83,188 +72,126 @@ body{
     justify-content:center;
 
     z-index:9999;
-
 }
 
 .loader-box{
-
     text-align:center;
-
 }
 
 .loader-box img{
-
     width:95px;
-
     margin-bottom:20px;
-
 }
 
 .loader-box h2{
-
     color:white;
-
     font-size:28px;
-
 }
 
 .loader-box p{
-
     color:#b9c7d9;
-
     margin:10px 0 25px;
-
 }
 
 .spinner{
-
     width:55px;
     height:55px;
 
     border:5px solid rgba(255,255,255,.2);
-
     border-top:5px solid var(--orange);
-
     border-radius:50%;
 
     animation:spin 1s linear infinite;
 
     margin:auto;
-
 }
 
 @keyframes spin{
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
-
+    to{ transform:rotate(360deg); }
 }
 
 /* APP */
-
 #app{
-
     display:none;
-
 }
 
 /* HEADER */
-
 header{
 
     position:sticky;
-
     top:0;
 
     z-index:999;
 
     background:rgba(12,20,34,.90);
-
     backdrop-filter:blur(18px);
 
     border-bottom:1px solid rgba(255,255,255,.06);
 
     transition:.3s;
-
 }
 
 header.shadow{
-
     box-shadow:0 12px 35px rgba(0,0,0,.35);
-
 }
 
 .header-container{
 
     width:min(1400px,94%);
-
     margin:auto;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
     padding:18px 0;
-
 }
 
 .header-left{
 
     display:flex;
-
     align-items:center;
-
     gap:18px;
-
 }
 
 .logo{
 
     width:62px;
-
     transition:.3s;
-
 }
 
 .logo:hover{
-
     transform:scale(1.05);
-
 }
 
 .header-left h1{
-
     font-size:30px;
-
-    color:white;
-
 }
 
 .header-left p{
-
     color:#b5c2d5;
-
     font-size:14px;
-
 }
 
 .header-right{
-
     display:flex;
-
     align-items:center;
-
     gap:18px;
-
 }
 
 .header-version{
-
     text-align:right;
-
 }
 
 .header-version span{
-
     display:block;
-
     color:#9eb0c9;
-
     font-size:13px;
-
 }
 
 .header-version strong{
-
     color:var(--orange);
-
     font-size:18px;
-
 }
 
 .theme-toggle{
@@ -273,34 +200,29 @@ header.shadow{
     height:48px;
 
     border:none;
-
     border-radius:50%;
 
     background:var(--orange);
-
     color:white;
 
     cursor:pointer;
 
-    transition:.3s;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     font-size:18px;
 
+    transition:.3s;
 }
 
 .theme-toggle:hover{
-
     transform:rotate(20deg) scale(1.05);
-
     background:var(--orangeHover);
-
 }
+/* ===========================================
+   STYLE.CSS - PARTE 2/4
+=========================================== */
 
 /* HERO */
 
@@ -321,7 +243,6 @@ header.shadow{
     padding:60px;
 
     box-shadow:var(--shadow);
-
 }
 
 .hero-content{
@@ -331,7 +252,6 @@ header.shadow{
     z-index:2;
 
     max-width:700px;
-
 }
 
 .hero-content h2{
@@ -339,7 +259,6 @@ header.shadow{
     font-size:42px;
 
     margin-bottom:20px;
-
 }
 
 .hero-content p{
@@ -349,54 +268,45 @@ header.shadow{
     line-height:1.9;
 
     font-size:17px;
-
 }
 
 .coa-bg{
 
-
     position:absolute;
 
-    right:230px;
+    right:40px;
 
     top:50%;
 
     transform:translateY(-50%);
 
-    opacity:.30;
+    opacity:.06;
 
     pointer-events:none;
 
     user-select:none;
-
 }
 
 .coa-bg img{
 
     width:420px;
 
-    max-width:100%;
-
-    filter:grayscale(0%) brightness(2);
-
-}
-
+    filter:grayscale(100%) brightness(2);
 }
 
 /* DASHBOARD */
 
 .dashboard{
 
-    width:min(1400px,95%);
+    width:min(1400px,94%);
 
-    margin:30px auto;
+    margin:35px auto;
 
     display:grid;
 
     grid-template-columns:repeat(3,1fr);
 
     gap:20px;
-
 }
 
 .dash-card{
@@ -414,7 +324,6 @@ header.shadow{
     border:1px solid rgba(255,255,255,.05);
 
     transition:.3s;
-
 }
 
 .dash-card:hover{
@@ -422,7 +331,6 @@ header.shadow{
     transform:translateY(-8px);
 
     background:var(--cardHover);
-
 }
 
 .dash-card i{
@@ -432,7 +340,6 @@ header.shadow{
     font-size:34px;
 
     margin-bottom:18px;
-
 }
 
 .dash-card h2{
@@ -440,7 +347,6 @@ header.shadow{
     font-size:42px;
 
     margin:10px 0;
-
 }
 
 .dash-card span{
@@ -448,8 +354,162 @@ header.shadow{
     color:#b8c4d7;
 
     display:block;
-
 }
+/* ===========================================
+   STYLE.CSS - PARTE 3/4
+=========================================== */
+
+/* INFO BOX */
+
+.robot-info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+    margin-bottom:24px;
+}
+
+.info-box{
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:15px;
+
+    padding:14px;
+
+    text-align:center;
+}
+
+.info-box small{
+
+    display:block;
+
+    color:#9eb0c9;
+
+    margin-bottom:6px;
+
+    font-size:12px;
+}
+
+.info-box strong{
+
+    font-size:15px;
+}
+
+/* BADGES */
+
+.badges{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:22px;
+}
+
+.badge{
+
+    padding:7px 14px;
+
+    border-radius:999px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.version{ background:#244d7b; color:#fff; }
+.xlsm{ background:#1f7a47; color:#fff; }
+.novo{ background:var(--orange); color:#fff; }
+
+/* BOTÃO DOWNLOAD */
+
+.download-btn{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    background:linear-gradient(135deg,var(--orange),#ff9d3f);
+
+    color:#fff;
+
+    transition:.3s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+}
+
+.download-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 15px 30px rgba(245,130,32,.35);
+}
+
+/* CARD */
+
+.robot-card{
+
+    position:relative;
+
+    border-radius:22px;
+
+    padding:28px;
+
+    background:var(--card);
+
+    box-shadow:var(--shadow);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.3s;
+}
+
+.robot-card:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--cardHover);
+}
+
+.tag{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:6px;
+
+    height:100%;
+
+    background:var(--orange);
+}
+/* ===========================================
+   STYLE.CSS - PARTE 4/4
+=========================================== */
 
 /* RESPONSIVO */
 
@@ -458,6 +518,12 @@ header.shadow{
     .dashboard{
 
         grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .hero{
+
+        padding:40px;
 
     }
 
@@ -471,531 +537,17 @@ header.shadow{
 
     }
 
-}
+    .robot-info{
 
-/* PESQUISA */
-
-.search-area{
-
-    width:min(1400px,94%);
-
-    margin:35px auto;
-
-}
-
-.search-box{
-
-    background:var(--card);
-
-    display:flex;
-
-    align-items:center;
-
-    gap:15px;
-
-    border-radius:18px;
-
-    padding:18px 22px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.search-box i{
-
-    color:var(--orange);
-
-    font-size:20px;
-
-}
-
-.search-box input{
-
-    width:100%;
-
-    background:none;
-
-    border:none;
-
-    outline:none;
-
-    color:var(--white);
-
-    font-size:17px;
-
-    font-family:inherit;
-
-}
-
-.search-box input::placeholder{
-
-    color:#9cadc6;
-
-}
-
-/* FILTROS */
-
-#filtros{
-
-    margin-top:20px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-}
-
-#filtros button{
-
-    border:none;
-
-    cursor:pointer;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:var(--card);
-
-    color:var(--white);
-
-    transition:.25s;
-
-    font-family:inherit;
-
-}
-
-#filtros button:hover,
-#filtros button.ativo{
-
-    background:var(--orange);
-
-    color:white;
-
-}
-
-/* ÚLTIMA AUTOMAÇÃO */
-
-.ultima{
-
-    width:min(1400px,94%);
-
-    margin:35px auto;
-
-    background:var(--card);
-
-    border-radius:20px;
-
-    padding:28px;
-
-    box-shadow:var(--shadow);
-
-}
-
-.ultima h3{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    color:var(--orange);
-
-    margin-bottom:18px;
-
-}
-
-#ultimaAutomacao{
-
-    color:var(--text);
-
-}
-
-/* TÍTULO */
-
-.titulo{
-
-    width:min(1400px,94%);
-
-    margin:40px auto 25px;
-
-    font-size:30px;
-
-}
-
-/* LISTA */
-
-#listaRobos{
-
-    width:min(1400px,94%);
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-
-    gap:28px;
-
-}
-
-/* CARD */
-
-.robot-card{
-
-    background:var(--card);
-
-    border-radius:22px;
-
-    padding:28px;
-
-    box-shadow:var(--shadow);
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.35s;
-
-    border:1px solid rgba(255,255,255,.05);
-
-}
-
-.robot-card:hover{
-
-    transform:translateY(-8px);
-
-    background:var(--cardHover);
-
-}
-
-.robot-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-start;
-
-}
-
-.robot-title h3{
-
-    font-size:24px;
-
-}
-
-.robot-title span{
-
-    color:#b7c6d9;
-
-    font-size:.9rem;
-
-}
-
-.robot-description{
-
-    color:#d5dfeb;
-
-    line-height:1.7;
-
-    margin:20px 0;
-
-    min-height:70px;
-
-}
-/* ===========================================
-   STYLE.CSS - PARTE 2/5
-=========================================== */
-
-/* BADGES */
-
-.badges{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-bottom:22px;
-
-}
-
-.badge{
-
-    padding:7px 14px;
-
-    border-radius:999px;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    letter-spacing:.3px;
-
-}
-
-.version{
-
-    background:#244d7b;
-
-    color:#fff;
-
-}
-
-.xlsm{
-
-    background:#1f7a47;
-
-    color:#fff;
-
-}
-
-.novo{
-
-    background:var(--orange);
-
-    color:#fff;
-
-}
-
-.pulse{
-
-    animation:pulse 1.4s infinite;
-
-}
-
-@keyframes pulse{
-
-    0%{
-
-        transform:scale(1);
-
-        box-shadow:0 0 0 0 rgba(245,130,32,.55);
+        grid-template-columns:1fr;
 
     }
 
-    70%{
+    .hero{
 
-        transform:scale(1.05);
-
-        box-shadow:0 0 0 12px rgba(245,130,32,0);
+        padding:25px;
 
     }
-
-    100%{
-
-        transform:scale(1);
-
-        box-shadow:0 0 0 0 rgba(245,130,32,0);
-
-    }
-
-}
-
-/* INFO */
-
-.robot-info{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:14px;
-
-    margin-bottom:24px;
-
-}
-
-.info-box{
-
-    background:rgba(255,255,255,.04);
-
-    border-radius:15px;
-
-    padding:14px;
-
-    text-align:center;
-
-}
-
-.info-box small{
-
-    display:block;
-
-    color:#9eb0c9;
-
-    margin-bottom:6px;
-
-    font-size:12px;
-
-}
-
-.info-box strong{
-
-    color:var(--white);
-
-    font-size:15px;
-
-}
-
-/* BOTÃO DOWNLOAD */
-
-.download-btn{
-
-    width:100%;
-
-    border:none;
-
-    outline:none;
-
-    cursor:pointer;
-
-    border-radius:16px;
-
-    padding:16px;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    background:linear-gradient(135deg,var(--orange),#ff9d3f);
-
-    color:#fff;
-
-    transition:.3s;
-
-}
-
-.download-btn:hover{
-
-    transform:translateY(-2px);
-
-    box-shadow:0 15px 30px rgba(245,130,32,.35);
-
-}
-
-.download-btn:active{
-
-    transform:scale(.98);
-
-}
-
-.download-btn i{
-
-    margin-right:8px;
-
-}
-
-/* TAG LATERAL */
-
-.tag{
-
-    position:absolute;
-
-    top:0;
-
-    left:0;
-
-    width:7px;
-
-    height:100%;
-
-    background:var(--orange);
-
-}
-
-/* CORES DAS CATEGORIAS */
-
-.robot-card.pcm .tag{
-
-    background:#1d70ff;
-
-}
-
-.robot-card.industrial .tag{
-
-    background:#d62828;
-
-}
-
-.robot-card.indicadores .tag{
-
-    background:#2fb344;
-
-}
-
-.robot-card.logística .tag,
-.robot-card.logistica .tag{
-
-    background:#f58220;
-
-}
-
-.robot-card.relatórios .tag,
-.robot-card.relatorios .tag{
-
-    background:#7b2cbf;
-
-}
-
-/* CARD SELECIONADO */
-
-.robot-card.active{
-
-    transform:scale(1.02);
-
-    border:1px solid var(--orange);
-
-    box-shadow:0 25px 45px rgba(0,0,0,.45);
-
-}
-
-/* ANIMAÇÃO */
-
-.fade-in{
-
-    animation:fade .45s ease;
-
-}
-
-@keyframes fade{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* HIGHLIGHT DA PESQUISA */
-
-mark{
-
-    background:var(--orange);
-
-    color:#000;
-
-    padding:2px 5px;
-
-    border-radius:6px;
 
 }
 
@@ -1005,32 +557,25 @@ mark{
 
     position:fixed;
 
-    bottom:30px;
+    bottom:25px;
 
-    right:30px;
+    right:25px;
 
     background:#1db954;
 
     color:#fff;
 
-    padding:16px 24px;
+    padding:14px 20px;
 
-    border-radius:14px;
-
-    font-weight:600;
-
-    box-shadow:0 15px 30px rgba(0,0,0,.35);
+    border-radius:12px;
 
     opacity:0;
 
-    transform:translateY(30px);
+    transform:translateY(20px);
 
-    pointer-events:none;
+    transition:.3s;
 
-    transition:.35s;
-
-    z-index:99999;
-
+    z-index:9999;
 }
 
 #toast.show{
@@ -1038,7 +583,6 @@ mark{
     opacity:1;
 
     transform:translateY(0);
-
 }
 
 /* FOOTER */
@@ -1047,869 +591,59 @@ footer{
 
     width:min(1400px,94%);
 
-    margin:70px auto 30px;
-
-    padding:35px 20px;
+    margin:60px auto 30px;
 
     text-align:center;
 
-    border-top:1px solid rgba(255,255,255,.08);
+    padding:30px 10px;
 
+    border-top:1px solid rgba(255,255,255,.08);
 }
 
 footer div{
 
-    font-size:22px;
+    color:var(--orange);
 
     font-weight:700;
 
-    color:var(--orange);
+    font-size:20px;
 
-    margin-bottom:10px;
-
+    margin-bottom:8px;
 }
 
 footer p{
 
     color:#c4d0df;
 
-    margin-bottom:8px;
-
 }
 
 footer small{
 
-    color:#90a2bb;
-
-}
-/* ===========================================
-   STYLE.CSS - PARTE 3/5
-=========================================== */
-
-/* RESPONSIVIDADE */
-
-@media (max-width:1200px){
-
-    .hero{
-
-        padding:45px;
-
-    }
-
-    .hero-content h2{
-
-        font-size:36px;
-
-    }
-
-    .coa-bg{
-
-        font-size:140px;
-
-    }
+    color:#8ea2bb;
 
 }
 
-@media (max-width:992px){
-
-    .header-container{
-
-        flex-direction:column;
-
-        gap:20px;
-
-        align-items:flex-start;
-
-    }
-
-    .header-right{
-
-        width:100%;
-
-        justify-content:space-between;
-
-    }
-
-    .hero{
-
-        padding:35px;
-
-    }
-
-    .hero-content{
-
-        max-width:100%;
-
-    }
-
-    .hero-content h2{
-
-        font-size:32px;
-
-    }
-
-    .coa-bg{
-
-        display:none;
-
-    }
-
-    .dashboard{
-
-        grid-template-columns:repeat(2,1fr);
-
-    }
-
-}
-
-@media (max-width:768px){
-
-    .dashboard{
-
-        grid-template-columns:1fr;
-
-    }
-
-    #listaRobos{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .robot-info{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .header-left{
-
-        gap:12px;
-
-    }
-
-    .header-left h1{
-
-        font-size:24px;
-
-    }
-
-    .logo{
-
-        width:50px;
-
-    }
-
-    .titulo{
-
-        font-size:24px;
-
-    }
-
-    .hero{
-
-        padding:28px;
-
-    }
-
-    .hero-content h2{
-
-        font-size:28px;
-
-    }
-
-    .hero-content p{
-
-        font-size:15px;
-
-    }
-
-}
-
-@media (max-width:500px){
-
-    .header-container{
-
-        width:92%;
-
-    }
-
-    .search-box{
-
-        padding:14px 18px;
-
-    }
-
-    .dash-card{
-
-        padding:28px;
-
-    }
-
-    .robot-card{
-
-        padding:22px;
-
-    }
-
-    .download-btn{
-
-        padding:15px;
-
-    }
-
-    #toast{
-
-        right:15px;
-
-        left:15px;
-
-        bottom:20px;
-
-        text-align:center;
-
-    }
-
-}
-
-/* SCROLLBAR */
+/* SCROLL */
 
 ::-webkit-scrollbar{
 
     width:10px;
-
 }
 
 ::-webkit-scrollbar-track{
 
     background:#0d1523;
-
 }
 
 ::-webkit-scrollbar-thumb{
 
     background:var(--orange);
-
     border-radius:20px;
-
 }
 
 ::-webkit-scrollbar-thumb:hover{
 
     background:#ff9f45;
-
-}
-
-/* SELEÇÃO */
-
-::selection{
-
-    background:var(--orange);
-
-    color:#fff;
-
-}
-
-/* LINKS */
-
-a{
-
-    text-decoration:none;
-
-    color:inherit;
-
-}
-
-/* IMAGENS */
-
-img{
-
-    max-width:100%;
-
-    display:block;
-
-}
-
-/* BOTÕES */
-
-button{
-
-    font-family:'Poppins',sans-serif;
-
-}
-
-/* INPUT */
-
-input{
-
-    font-family:'Poppins',sans-serif;
-
-}
-/* ===========================================
-   STYLE.CSS - PARTE 4/5
-=========================================== */
-
-/* ANIMAÇÕES */
-
-@keyframes subir{
-
-    from{
-
-        opacity:0;
-        transform:translateY(25px);
-
-    }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
-    }
-
-}
-
-@keyframes aparecer{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-@keyframes flutuar{
-
-    0%{
-
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-6px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* DASHBOARD */
-
-.dash-card{
-
-    animation:subir .5s ease;
-
-}
-
-.dash-card:nth-child(2){
-
-    animation-delay:.08s;
-
-}
-
-.dash-card:nth-child(3){
-
-    animation-delay:.16s;
-
-}
-
-/* HERO */
-
-.hero-content{
-
-    animation:subir .7s ease;
-
-}
-
-.logo{
-
-    animation:flutuar 5s infinite ease-in-out;
-
-}
-
-/* CARDS */
-
-.robot-card{
-
-    animation:subir .45s ease;
-
-}
-
-.robot-card:hover .robot-title h3{
-
-    color:var(--orange);
-
-}
-
-.robot-card:hover .tag{
-
-    width:10px;
-
-}
-
-.robot-card:hover .badge{
-
-    transform:scale(1.05);
-
-}
-
-/* BADGES */
-
-.badge{
-
-    transition:.3s;
-
-}
-
-/* INFO */
-
-.info-box{
-
-    transition:.3s;
-
-}
-
-.info-box:hover{
-
-    background:rgba(255,255,255,.08);
-
-}
-
-/* INPUT */
-
-.search-box{
-
-    transition:.3s;
-
-}
-
-.search-box:focus-within{
-
-    border:1px solid var(--orange);
-
-    box-shadow:0 0 0 4px rgba(245,130,32,.15);
-
-}
-
-/* FILTROS */
-
-#filtros button{
-
-    font-weight:500;
-
-}
-
-#filtros button:active{
-
-    transform:scale(.95);
-
-}
-
-/* HEADER */
-
-header{
-
-    transition:.35s;
-
-}
-
-header.shadow{
-
-    backdrop-filter:blur(25px);
-
-}
-
-/* HERO */
-
-.hero::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:350px;
-
-    height:350px;
-
-    border-radius:50%;
-
-    background:rgba(245,130,32,.08);
-
-    right:-120px;
-
-    top:-120px;
-
-}
-
-.hero::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-
-    height:220px;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.03);
-
-    left:-80px;
-
-    bottom:-80px;
-
-}
-
-/* TÍTULOS */
-
-.titulo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-}
-
-.titulo::before{
-
-    content:"";
-
-    width:8px;
-
-    height:35px;
-
-    border-radius:10px;
-
-    background:var(--orange);
-
-}
-
-/* ÚLTIMA AUTOMAÇÃO */
-
-#ultimaAutomacao strong{
-
-    color:var(--orange);
-
-    font-size:20px;
-
-}
-
-#ultimaAutomacao small{
-
-    color:#aab8ca;
-
-}
-
-/* MODO CARD ABERTO */
-
-body.card-open .robot-card:not(.active){
-
-    opacity:.45;
-
-    filter:blur(2px);
-
-    transform:scale(.98);
-
-}
-
-body.card-open .robot-card.active{
-
-    opacity:1;
-
-    filter:none;
-
-}
-
-/* EFEITO GERAL */
-
-.robot-card,
-.dash-card,
-.hero,
-.search-box,
-.ultima{
-
-    border:1px solid rgba(255,255,255,.05);
-
-}
-/* ===========================================
-   STYLE.CSS - PARTE 5/5
-=========================================== */
-
-/* MODO CLARO */
-
-body.light{
-
-    background:#eef2f7;
-
-    color:#222;
-
-}
-
-body.light header{
-
-    background:rgba(255,255,255,.95);
-
-    border-bottom:1px solid #e4e8ef;
-
-}
-
-body.light .hero{
-
-    background:linear-gradient(135deg,#ffffff,#eef3f9);
-
-}
-
-body.light .hero-content h2{
-
-    color:#1b1b1b;
-
-}
-
-body.light .hero-content p{
-
-    color:#555;
-
-}
-
-body.light .coa-bg{
-
-    color:rgba(0,0,0,.04);
-
-}
-
-body.light .dash-card,
-body.light .robot-card,
-body.light .search-box,
-body.light .ultima{
-
-    background:#ffffff;
-
-    color:#222;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-
-}
-
-body.light .robot-description{
-
-    color:#555;
-
-}
-
-body.light .robot-title span{
-
-    color:#666;
-
-}
-
-body.light .info-box{
-
-    background:#f5f7fb;
-
-}
-
-body.light .info-box small{
-
-    color:#777;
-
-}
-
-body.light .info-box strong{
-
-    color:#222;
-
-}
-
-body.light .search-box input{
-
-    color:#222;
-
-}
-
-body.light .search-box input::placeholder{
-
-    color:#888;
-
-}
-
-body.light #filtros button{
-
-    background:#f4f5f7;
-
-    color:#333;
-
-}
-
-body.light #filtros button:hover,
-body.light #filtros button.ativo{
-
-    background:var(--orange);
-
-    color:#fff;
-
-}
-
-body.light footer{
-
-    border-top:1px solid #ddd;
-
-}
-
-body.light footer p{
-
-    color:#666;
-
-}
-
-body.light footer small{
-
-    color:#888;
-
-}
-
-body.light .header-left h1{
-
-    color:#222;
-
-}
-
-body.light .header-left p{
-
-    color:#666;
-
-}
-
-/* ACABAMENTO */
-
-.robot-card,
-.dash-card,
-.hero,
-.search-box,
-.ultima{
-
-    transition:all .30s ease;
-
-}
-
-.robot-card:hover{
-
-    box-shadow:0 18px 40px rgba(0,0,0,.25);
-
-}
-
-.dash-card:hover{
-
-    box-shadow:0 18px 40px rgba(0,0,0,.25);
-
-}
-
-.hero{
-
-    overflow:hidden;
-
-}
-
-.hero-content{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-.coa-bg{
-
-    pointer-events:none;
-
-}
-
-.theme-toggle{
-
-    box-shadow:0 10px 25px rgba(245,130,32,.35);
-
-}
-
-.theme-toggle:hover{
-
-    box-shadow:0 15px 35px rgba(245,130,32,.45);
-
-}
-
-.download-btn{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:10px;
-
-}
-
-.download-btn i{
-
-    font-size:16px;
-
-}
-
-.robot-card.active{
-
-    outline:2px solid var(--orange);
-
-    outline-offset:3px;
-
-}
-
-#toast{
-
-    font-size:15px;
-
-    letter-spacing:.3px;
-
-}
-
-.fade-in{
-
-    animation:fade .4s ease both;
-
-}
-
-@keyframes fade{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(15px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
 }
 
-/* FIM DO ARQUIVO */
+/* FIM */
