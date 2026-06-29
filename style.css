@@ -387,15 +387,25 @@ header.shadow{
 
 .dashboard{
 
-    width:min(1400px,94%);
+    width:min(1400px,95%);
 
-    margin:35px auto;
+    margin:30px auto;
 
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
+    display:flex;
 
     gap:20px;
+
+    justify-content:space-between;
+
+    align-items:stretch;
+
+}
+
+.dashboard .dash-card{
+
+    flex:1;
+
+}
 
 }
 
@@ -410,10 +420,6 @@ header.shadow{
 }
 
 @media (max-width:600px){
-
-    .dashboard{
-
-        grid-template-columns:1fr;
 
     }
 
