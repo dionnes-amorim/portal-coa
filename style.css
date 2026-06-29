@@ -578,8 +578,6 @@ header.shadow{
 
 /* ÚLTIMA AUTOMAÇÃO */
 
-/* ÚLTIMA AUTOMAÇÃO */
-
 .ultima{
 
     width:min(1400px,94%);
@@ -604,7 +602,7 @@ header.shadow{
 
     gap:10px;
 
-    color:#1d70ff;
+    color:#1d70ff !important;
 
     margin-bottom:18px;
 
@@ -612,7 +610,7 @@ header.shadow{
 
 #ultimaAutomacao{
 
-    color:#1d70ff !important;
+    color:#ffffff !important;
 
 }
 
