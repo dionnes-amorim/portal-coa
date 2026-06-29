@@ -397,6 +397,16 @@ header.shadow{
 
     gap:20px;
 
+    align-items:stretch;
+
+}
+
+.dash-card{
+
+    width:100%;
+
+    text-align:center;
+
 }
 
 .dash-card{
