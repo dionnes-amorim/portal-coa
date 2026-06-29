@@ -387,34 +387,92 @@ header.shadow{
 
 .dashboard{
 
-    width:95%;
-    max-width:1400px;
+    width:min(1400px,95%);
 
     margin:30px auto;
 
     display:flex;
 
-    flex-direction:row;
+    gap:20px;
 
     justify-content:space-between;
 
-    gap:20px;
+    align-items:stretch;
+
+}
+
+.dashboard .dash-card{
+.dashboard .dash-card{
+
+    flex:1;
+
+}
+
+}
+
+@media (max-width:900px){
+
+    .dashboard{
+    .dashboard{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:600px){
+        flex-direction:column;
+
+    }
 
 }
 
 .dash-card{
 
-    flex:1;
+    background:var(--card);
 
-    min-width:0;
+    border-radius:22px;
 
-    background:#202b44;
+    padding:35px;
 
-    border-radius:18px;
+    box-shadow:var(--shadow);
 
-    padding:25px;
+    transition:.3s;
 
     text-align:center;
+
+    border:1px solid rgba(255,255,255,.05);
+
+}
+.dash-card:hover{
+
+    transform:translateY(-8px);
+
+    background:var(--cardHover);
+
+}
+
+.dash-card i{
+
+    color:var(--orange);
+
+    font-size:34px;
+
+    margin-bottom:18px;
+
+}
+.dash-card h2{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.dash-card span{
+
+    color:#b8c4d7;
 
 }
 
