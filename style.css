@@ -602,15 +602,33 @@ header.shadow{
 
     gap:10px;
 
-    color:#1d70ff !important;
+    color:var(--orange) !important;
 
     margin-bottom:18px;
+
+}
+
+.ultima h3 i{
+
+    color:var(--orange) !important;
 
 }
 
 #ultimaAutomacao{
 
     color:#ffffff !important;
+
+}
+
+#ultimaAutomacao strong{
+
+    color:#ffffff !important;
+
+}
+
+#ultimaAutomacao small{
+
+    color:#cfd6e3 !important;
 
 }
 
