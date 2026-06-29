@@ -387,85 +387,34 @@ header.shadow{
 
 .dashboard{
 
-    width:min(1400px,95%);
+    width:95%;
+    max-width:1400px;
 
     margin:30px auto;
 
     display:flex;
 
-    gap:20px;
+    flex-direction:row;
 
     justify-content:space-between;
 
-    align-items:stretch;
-
-}
-
-.dashboard .dash-card{
-
-    flex:1;
-
-}
-
-}
-
-@media (max-width:900px){
-
-    .dashboard{
-
-        flex-direction:column;
-
-    }
+    gap:20px;
 
 }
 
 .dash-card{
 
-    background:var(--card);
+    flex:1;
 
-    border-radius:22px;
+    min-width:0;
 
-    padding:35px;
+    background:#202b44;
 
-    box-shadow:var(--shadow);
+    border-radius:18px;
 
-    transition:.3s;
+    padding:25px;
 
     text-align:center;
-
-    border:1px solid rgba(255,255,255,.05);
-
-}
-
-.dash-card:hover{
-
-    transform:translateY(-8px);
-
-    background:var(--cardHover);
-
-}
-
-.dash-card i{
-
-    color:var(--orange);
-
-    font-size:34px;
-
-    margin-bottom:18px;
-
-}
-
-.dash-card h2{
-
-    font-size:42px;
-
-    margin-bottom:10px;
-
-}
-
-.dash-card span{
-
-    color:#b8c4d7;
 
 }
 
