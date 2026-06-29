@@ -6,7 +6,7 @@
 
 /* RESET */
 
-*{
+*{F
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -584,7 +584,7 @@ header.shadow{
 
     margin:35px auto;
 
-    background:var(--card);
+    background:var(--blue);
 
     border-radius:20px;
 
